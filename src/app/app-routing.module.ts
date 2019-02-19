@@ -4,8 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'welcome-page',
     pathMatch: 'full'
+  },
+  { path: 'welcome-page',
+    loadChildren: './welcome-page/welcome-page.module#WelcomePagePageModule'
   },
   {
     path: 'home',
@@ -14,7 +17,11 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
-  }
+  },
+  {
+    path: '**',
+    redirectTo: 'welcome-page'
+  },
 ];
 
 @NgModule({
