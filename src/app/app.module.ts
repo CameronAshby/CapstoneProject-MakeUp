@@ -1,5 +1,12 @@
+import { APIKeys } from '../../api-keys'
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+const firebaseConfig = APIKeys.firebaseConfig;
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -14,6 +21,9 @@ import { AppRoutingModule } from './app-routing.module';
   entryComponents: [],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     IonicModule.forRoot(),
     AppRoutingModule
   ],
