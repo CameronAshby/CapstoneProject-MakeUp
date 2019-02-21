@@ -7,18 +7,15 @@ import {ApiService} from '../service/api/api.service';
   styleUrls: ['./welcome-page.page.scss'],
 })
 export class WelcomePagePage implements OnInit {
+  makeUpArray = [];
 
   constructor(private api: ApiService) {
+    this.api.initializeAPI().subscribe((data) => {
+      console.log(data);
+      this.makeUpArray = data;
+    });
   }
 
   ngOnInit() {
-  }
-
-  loadAPI() {
-    this.api.initializeAPI().subscribe((data) => {
-      console.log('started');
-      console.log(data);
-      console.log('finished');
-    });
   }
 }
