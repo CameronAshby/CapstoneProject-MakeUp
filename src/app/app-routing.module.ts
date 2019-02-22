@@ -24,8 +24,12 @@ const routes: Routes = [
   },
 ];
 
+// path: 'something/:id'
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    paramsInheritanceStrategy: 'always'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
