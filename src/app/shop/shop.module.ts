@@ -10,7 +10,45 @@ import { ShopPage } from './shop.page';
 const routes: Routes = [
   {
     path: '',
-    component: ShopPage
+    component: ShopPage,
+    children: [
+      {
+        path: 'product',
+        children: [
+          {
+            path: '',
+            loadChildren: './shop/product/product.module#ProductPageModule'
+          }
+        ]
+      },
+      {
+        path: 'brand',
+        children: [
+          {
+            path: '',
+            loadChildren: './shop/brand/brand.module#BrandPageModule'
+          }
+        ]
+      },
+      {
+        path: 'qualities',
+        children: [
+          {
+            path: '',
+            loadChildren: './shop/qualities/qualities.module#QualitiesPageModule'
+          }
+        ]
+      },
+      {
+        path: 'search',
+        children: [
+          {
+            path: '',
+            loadChildren: './shop/search/search.module#SearchPageModule'
+          }
+        ]
+      },
+    ]
   }
 ];
 

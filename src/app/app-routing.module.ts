@@ -34,6 +34,10 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'welcome-page'
   },
+  { path: 'brand', loadChildren: './shop/brand/brand.module#BrandPageModule' },
+  { path: 'product', loadChildren: './shop/product/product.module#ProductPageModule' },
+  { path: 'qualities', loadChildren: './shop/qualities/qualities.module#QualitiesPageModule' },
+  { path: 'search', loadChildren: './shop/search/search.module#SearchPageModule' },
 ];
 
 // path: 'something/:id'
