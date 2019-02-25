@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from '../service/api/api.service';
 import {Observable} from 'rxjs';
+import {ApiService} from '../service/api/api.service';
 
 @Component({
-  selector: 'app-welcome-page',
-  templateUrl: './welcome-page.page.html',
-  styleUrls: ['./welcome-page.page.scss'],
+  selector: 'app-shop',
+  templateUrl: './shop.page.html',
+  styleUrls: ['./shop.page.scss'],
 })
-export class WelcomePagePage implements OnInit {
+export class ShopPage implements OnInit {
 
   product$: Observable<any>;
 
@@ -19,4 +19,5 @@ export class WelcomePagePage implements OnInit {
 
   ngOnInit() {
   }
+
 }
