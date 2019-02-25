@@ -7,12 +7,24 @@ const routes: Routes = [
     redirectTo: 'welcome-page',
     pathMatch: 'full'
   },
-  { path: 'welcome-page',
+  {
+    path: 'welcome-page',
     loadChildren: './welcome-page/welcome-page.module#WelcomePagePageModule'
   },
   {
     path: 'home',
     loadChildren: './home/home.module#HomePageModule'
+  },
+  { path: 'cart',
+    loadChildren: './cart/cart.module#CartPageModule'
+  },
+  {
+    path: 'shop',
+    loadChildren: './shop/shop.module#ShopPageModule'
+  },
+  {
+    path: 'profile',
+    loadChildren: './profile/profile.module#ProfilePageModule'
   },
   {
     path: 'list',
