@@ -17,7 +17,11 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: './shop/product/product.module#ProductPageModule'
+            loadChildren: './product/product.module#ProductPageModule'
+          },
+          {
+            path: ':id',
+            loadChildren: './product/product.module#ProductPageModule'
           }
         ]
       },
@@ -26,7 +30,11 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: './shop/brand/brand.module#BrandPageModule'
+            loadChildren: './brand/brand.module#BrandPageModule'
+          },
+          {
+            path: ':id',
+            loadChildren: './brand/brand.module#BrandPageModule'
           }
         ]
       },
@@ -35,7 +43,11 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: './shop/qualities/qualities.module#QualitiesPageModule'
+            loadChildren: './qualities/qualities.module#QualitiesPageModule'
+          },
+          {
+            path: ':id',
+            loadChildren: './qualities/qualities.module#QualitiesPageModule'
           }
         ]
       },
@@ -44,10 +56,15 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: './shop/search/search.module#SearchPageModule'
+            loadChildren: './search/search.module#SearchPageModule'
           }
         ]
       },
+      {
+        path: '',
+        redirectTo: '/shop/product',
+        pathMatch: 'full'
+      }
     ]
   }
 ];
