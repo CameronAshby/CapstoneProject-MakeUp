@@ -1,6 +1,6 @@
+
 import {Component, NgZone, OnInit} from '@angular/core';
 import {LoginService} from "../service/login/login.service";
-
 
 @Component({
   selector: 'app-welcome-page',
@@ -14,6 +14,7 @@ export class WelcomePagePage implements OnInit {
   user;
 
   constructor(private loginService: LoginService, private zone:NgZone) {
+
   }
 
   ngOnInit() {
