@@ -25,10 +25,6 @@ const routes: Routes = [
               {
                 path: '',
                 loadChildren: './product/product.module#ProductPageModule'
-              },
-              {
-                path: ':id',
-                loadChildren: './product/product.module#ProductPageModule'
               }
             ]
           }
@@ -66,6 +62,19 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: './search/search.module#SearchPageModule'
+          }
+        ]
+      },
+      {
+        path: 'product-page',
+        children: [
+          {
+            path: '',
+            loadChildren: './product-page/product-page.module#ProductPagePageModule'
+          },
+          {
+            path: ':id',
+            loadChildren: './product-page/product-page.module#ProductPagePageModule'
           }
         ]
       },
