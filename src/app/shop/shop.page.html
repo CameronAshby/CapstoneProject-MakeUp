@@ -4,8 +4,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <div *ngIf="product$ | async as product">
-    <div *ngFor="let item of product">{{item.name}}</div>
-  </div>
-</ion-content>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="product">
+      <ion-icon name="basket"></ion-icon>
+      <ion-label>Product</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="brand">
+      <ion-icon name="rose"></ion-icon>
+      <ion-label>Brand</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="qualities">
+      <ion-icon name="star"></ion-icon>
+      <ion-label>Qualities</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="search">
+      <ion-icon name="search"></ion-icon>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

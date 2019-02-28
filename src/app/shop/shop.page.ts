@@ -15,6 +15,10 @@ export class ShopPage implements OnInit {
 
   constructor(private api: ApiService) {
     this.product$ = this.api.initializeAPI();
+
+    this.api.initializeAPI().subscribe((data) => {
+      console.log(data);
+    })
   }
 
   ngOnInit() {
