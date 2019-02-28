@@ -37,13 +37,11 @@
   </ion-card>
 </ion-content>
 
-<ion-content>
-  <div *ngIf="id">
-    <div *ngIf="results$ | async as product">
-      <ion-card *ngFor="let item of product">
-        <ion-card-title>{{item.name}}</ion-card-title>
-        <button (click)="showDetails(item.id, item)">View Details</button>
-      </ion-card>
-    </div>
+<ion-content *ngIf="id">
+  <div *ngIf="results$ | async as product">
+    <ion-card *ngFor="let item of product">
+      <ion-card-title>{{item.name}}</ion-card-title>
+      <button (click)="showDetails(item.id)">View Details</button>
+    </ion-card>
   </div>
 </ion-content>
