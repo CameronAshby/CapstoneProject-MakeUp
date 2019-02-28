@@ -11,6 +11,8 @@ import {ApiService} from '../../service/api/api.service';
 export class ProductPage implements OnInit {
 
   id: string;
+  productId: string;
+  selectedItem: {};
   results$: Observable<any>;
 
   product = [];
@@ -24,8 +26,15 @@ export class ProductPage implements OnInit {
     }
   }
 
-  changePage(id) {
+  changeMenu(id: string) {
     this.router.navigate(['shop','product',id]);
   }
 
+  showDetails(id: string, selectedItem: {}) {
+    this.router.navigate(['shop','product',this.id,id]).then(() => {
+      this.productId = id;
+      this.selectedItem = selectedItem;
+      console.log(this.selectedItem);
+    });
+  }
 }

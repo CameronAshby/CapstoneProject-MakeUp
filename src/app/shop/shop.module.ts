@@ -21,7 +21,16 @@ const routes: Routes = [
           },
           {
             path: ':id',
-            loadChildren: './product/product.module#ProductPageModule'
+            children: [
+              {
+                path: '',
+                loadChildren: './product/product.module#ProductPageModule'
+              },
+              {
+                path: ':id',
+                loadChildren: './product/product.module#ProductPageModule'
+              }
+            ]
           }
         ]
       },

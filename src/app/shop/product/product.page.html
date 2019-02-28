@@ -5,42 +5,45 @@
 </ion-header>
 
 <ion-content *ngIf="!id" padding>
-  <ion-card (click)="changePage('blush')">
+  <ion-card (click)="changeMenu('blush')">
     <ion-card-title>Blush</ion-card-title>
   </ion-card>
-  <ion-card (click)="changePage('bronzer')">
+  <ion-card (click)="changeMenu('bronzer')">
     <ion-card-title>Bronzer</ion-card-title>
   </ion-card>
-  <ion-card (click)="changePage('eyebrow')">
+  <ion-card (click)="changeMenu('eyebrow')">
     <ion-card-title>Eyebrow</ion-card-title>
   </ion-card>
-  <ion-card (click)="changePage('eyeliner')">
+  <ion-card (click)="changeMenu('eyeliner')">
     <ion-card-title>Eyeliner</ion-card-title>
   </ion-card>
-  <ion-card (click)="changePage('eyeshadow')">
+  <ion-card (click)="changeMenu('eyeshadow')">
     <ion-card-title>Eyeshadow</ion-card-title>
   </ion-card>
-  <ion-card (click)="changePage('foundation')">
+  <ion-card (click)="changeMenu('foundation')">
     <ion-card-title>Foundation</ion-card-title>
   </ion-card>
-  <ion-card (click)="changePage('lipliner')">
+  <ion-card (click)="changeMenu('lip_liner')">
     <ion-card-title>Lip Liner</ion-card-title>
   </ion-card>
-  <ion-card (click)="changePage('lipstick')">
+  <ion-card (click)="changeMenu('lipstick')">
     <ion-card-title>Lipstick</ion-card-title>
   </ion-card>
-  <ion-card (click)="changePage('mascara')">
+  <ion-card (click)="changeMenu('mascara')">
     <ion-card-title>Mascara</ion-card-title>
   </ion-card>
-  <ion-card (click)="changePage('nailpolish')">
+  <ion-card (click)="changeMenu('nail_polish')">
     <ion-card-title>Nail Polish</ion-card-title>
   </ion-card>
 </ion-content>
 
-<ion-content *ngIf="id">
-  <div *ngIf="results$ | async as product">
-    <ion-card *ngFor="let item of product">
-      <ion-card-title>{{item.name}}</ion-card-title>
-    </ion-card>
+<ion-content>
+  <div *ngIf="id">
+    <div *ngIf="results$ | async as product">
+      <ion-card *ngFor="let item of product">
+        <ion-card-title>{{item.name}}</ion-card-title>
+        <button (click)="showDetails(item.id, item)">View Details</button>
+      </ion-card>
+    </div>
   </div>
 </ion-content>
