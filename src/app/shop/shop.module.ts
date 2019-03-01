@@ -39,7 +39,12 @@ const routes: Routes = [
           },
           {
             path: ':id',
-            loadChildren: './brand/brand.module#BrandPageModule'
+            children: [
+              {
+                path: '',
+                loadChildren: './brand/brand.module#BrandPageModule'
+              }
+            ]
           }
         ]
       },

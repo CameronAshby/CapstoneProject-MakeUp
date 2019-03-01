@@ -18,4 +18,8 @@ export class ApiService {
   getByProduct(id): Observable<any> {
     return this.http.get(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${id}`);
   }
+
+  getByBrand(id): Observable<any> {
+    return this.http.get(`http://makeup-api.herokuapp.com/api/v1/products.json?brand=${id}`);
+  }
 }

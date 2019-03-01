@@ -4,170 +4,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-card>
-    <ion-card-title>Almay</ion-card-title>
+<ion-content padding *ngIf="!id">
+  <ion-card *ngFor="let brand of brands" (click)="changeMenu(brand.code)">
+    <ion-card-title>{{brand.name}}</ion-card-title>
   </ion-card>
-  <ion-card>
-    <ion-card-title>Alva</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Anna Sui</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Annabelle</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Benefit</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Boosh</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Burt's Bees</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Butter London</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>C'est Moi</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Cargo Cosmetics</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>China Glaze</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Clinique</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Coastal Classic Creation</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Colourpop</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Covergirl</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Dalish</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Deciem</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Dior</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Dr. Hauschka</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>e.l.f.</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Essie</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Fenty</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Glossier</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Green People</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>L'oreal</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Lotus Cosmetics USA</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Maia's Mineral Galaxy</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Marcelle</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Marienatie</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Maybelline</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Milani</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Misa</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Mistura</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Moov</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Nudus</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Nyx</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Orly</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Pacifica</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Penny Lane Organics</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Physicians Formula</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Piggy Paint</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Pure Anada</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Rejuva Minerals</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Revlon</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Sally B's Skin Yummies</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Salon Perfect</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Sante</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Sinful Colors</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Smashbox</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Stila</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Suncoat</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>W3llpeople</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Wet N Wild</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Zorah</ion-card-title>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Zorah Biocosmetics</ion-card-title>
-  </ion-card>
+</ion-content>
+
+
+<ion-content *ngIf="id">
+  <div *ngIf="results$ | async as product">
+    <ion-card *ngFor="let item of product">
+      <ion-card-title>{{item.name}}</ion-card-title>
+      <button (click)="showDetails(item.id)">View Details</button>
+    </ion-card>
+  </div>
 </ion-content>
