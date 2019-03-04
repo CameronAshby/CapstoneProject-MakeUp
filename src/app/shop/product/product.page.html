@@ -4,17 +4,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding *ngIf="!id">
-  <ion-card *ngFor="let product of products" (click)="changeMenu(product.code)">
-    <ion-card-title>{{product.name}}</ion-card-title>
-  </ion-card>
-</ion-content>
-
-<ion-content *ngIf="id">
-  <div *ngIf="results$ | async as productArray">
-    <ion-card *ngFor="let item of productArray">
-      <ion-card-title>{{item.name}}</ion-card-title>
-      <button (click)="showDetails(item.id)">View Details</button>
+<div *ngIf="!selectedId">
+  <ion-content padding *ngIf="!id">
+    <ion-card *ngFor="let product of products" (click)="changeMenu(product.code)">
+      <ion-card-title>{{product.name}}</ion-card-title>
     </ion-card>
-  </div>
+  </ion-content>
+
+  <ion-content *ngIf="id">
+    <div *ngIf="results$ | async as productArray">
+      <ion-card *ngFor="let item of productArray">
+        <ion-card-title>{{item.name}}</ion-card-title>
+        <button (click)="showDetails(item.id), selectItem(item)">View Details</button>
+      </ion-card>
+    </div>
+  </ion-content>
+</div>
+
+<ion-content *ngIf="selectedId">
+
 </ion-content>

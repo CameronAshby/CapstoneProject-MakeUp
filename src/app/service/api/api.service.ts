@@ -39,6 +39,6 @@ export class ApiService {
   }
 
   getById(url) {
-
+    return this.http.get(url);
   }
 }

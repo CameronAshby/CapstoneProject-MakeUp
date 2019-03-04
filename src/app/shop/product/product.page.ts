@@ -24,8 +24,11 @@ export class ProductPage implements OnInit {
   ];
 
   id: string;
+  selectedId: string;
   results$: Observable<any>;
+  getItem$: Observable<any>;
 
+  selectedItem = {};
   productArray = [];
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
@@ -35,6 +38,10 @@ export class ProductPage implements OnInit {
     if(this.id) {
       this.results$ = this.api.getByProduct(this.id);
     }
+
+    if(this.selectedId) {
+      // this.getItem$ = this.api.getById(this.selectedItem.apiUrl);
+    }
   }
 
   changeMenu(id: string) {
@@ -42,6 +49,11 @@ export class ProductPage implements OnInit {
   }
 
   showDetails(id: string) {
-    this.router.navigate(['shop','product-page']);
+    this.selectedId = id;
+    this.router.navigate(['shop','product', this.id, this.selectedId]);
+  }
+
+  selectItem(item) {
+    this.selectedItem = item;
   }
 }
