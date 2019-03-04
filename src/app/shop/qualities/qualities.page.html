@@ -11,10 +11,8 @@
 </ion-content>
 
 <ion-content *ngIf="id">
-  <div *ngIf="results$ | async as qualityArray">
-    <ion-card *ngFor="let item of qualityArray">
-      <ion-card-title>{{item.name}}</ion-card-title>
-      <button (click)="showDetails(item.id)">View Details</button>
-    </ion-card>
-  </div>
+  <ion-card *ngFor="let quality of qualityArray">
+    <ion-card-title>{{quality.name}}</ion-card-title>
+    <button (click)="showDetails(quality.id)">View Details</button>
+  </ion-card>
 </ion-content>

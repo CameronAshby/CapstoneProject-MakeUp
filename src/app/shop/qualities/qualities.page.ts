@@ -35,7 +35,6 @@ export class QualitiesPage implements OnInit {
   ];
 
   id: string;
-  results$: Observable<any>;
 
   qualityArray = [];
 
@@ -44,7 +43,7 @@ export class QualitiesPage implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     if(this.id) {
-      this.results$ = this.api.getByProduct(this.id);
+      this.qualityArray = this.api.getByQuality(this.id);
     }
   }
 

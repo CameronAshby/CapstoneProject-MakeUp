@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
+  apiArray = [];
 
   constructor(private http : HttpClient) {
 
@@ -21,5 +22,23 @@ export class ApiService {
 
   getByBrand(id): Observable<any> {
     return this.http.get(`http://makeup-api.herokuapp.com/api/v1/products.json?brand=${id}`);
+  }
+
+  getByQuality(quality) {
+    let filteredArray = [];
+
+    this.apiArray.forEach((item) => {
+      item.tag_list.forEach((tag) => {
+        if(tag === quality) {
+          filteredArray.push(item);
+        }
+      })
+    });
+
+    return filteredArray;
+  }
+
+  getById(url) {
+
   }
 }
