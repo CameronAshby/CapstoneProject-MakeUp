@@ -1,9 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>qualities</ion-title>
+    <ion-title>product</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="!id">
+  <ion-card *ngFor="let quality of qualities" (click)="changeMenu(quality.code)">
+    <ion-card-title>{{quality.name}}</ion-card-title>
+  </ion-card>
+</ion-content>
 
+<ion-content *ngIf="id">
+  <ion-card *ngFor="let quality of qualityArray">
+    <ion-card-title>{{quality.name}}</ion-card-title>
+    <button (click)="showDetails(quality.id)">View Details</button>
+  </ion-card>
 </ion-content>
