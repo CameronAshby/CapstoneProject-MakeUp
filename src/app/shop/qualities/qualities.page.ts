@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ApiService} from '../../service/api/api.service';
 
 @Component({
   selector: 'app-qualities',
@@ -6,10 +9,50 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./qualities.page.scss'],
 })
 export class QualitiesPage implements OnInit {
+  qualities = [
+    {name: 'Canadian', code: 'Canadian'},
+    {name: 'CertClean', code: 'CertClean'},
+    {name: 'Dairy Free', code: 'Dairy Free'},
+    {name: 'EWG Verified', code: 'EWG Verified'},
+    {name: 'EcoCert', code: 'EcoCert'},
+    {name: 'Fair Trade', code: 'Fair Trade'},
+    {name: 'Gluten Free', code: 'Gluten Free'},
+    {name: 'Hypoallergenic', code: 'Hypoallergenic'},
+    {name: 'Natural', code: 'Natural'},
+    {name: 'No Talc', code: 'No Talc'},
+    {name: 'Non-GMO', code: 'Non-GMO'},
+    {name: 'Organic', code: 'Organic'},
+    {name: 'Peanut Free Product', code: 'Peanut Free Product'},
+    {name: 'Sugar Free', code: 'Sugar Free'},
+    {name: 'USDA Organic', code: 'USDA Organic'},
+    {name: 'Vegan', code: 'Vegan'},
+    {name: 'Alcohol Free', code: 'alcohol free'},
+    {name: 'Cruelty Free', code: 'cruelty free'},
+    {name: 'Oil Free', code: 'oil free'},
+    {name: 'Purpicks', code: 'purpicks'},
+    {name: 'Silicone Free', code: 'silicone free'},
+    {name: 'Water Free', code: 'water free'},
+  ];
 
-  constructor() { }
+  id: string;
+  results$: Observable<any>;
+
+  qualityArray = [];
+
+  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    if(this.id) {
+      this.results$ = this.api.getByProduct(this.id);
+    }
   }
 
+  changeMenu(id: string) {
+    this.router.navigate(['shop','qualities',id]);
+  }
+
+  showDetails(id: string) {
+    this.router.navigate(['shop','product-page']);
+  }
 }

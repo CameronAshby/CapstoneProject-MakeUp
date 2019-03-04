@@ -60,7 +60,7 @@ export class BrandPage implements OnInit {
     {name: `Sally B's Skin Yummies`, code: `sally b's skin yummies`},
     {name: 'Salon Perfect', code: 'salon perfect'},
     {name: 'Sante', code: 'sante'},
-    {name: 'Sinful Colors', code: 'sinful colors'},
+    {name: 'Sinful Colours', code: 'sinful colours'},
     {name: 'Smashbox', code: 'smashbox'},
     {name: 'Stila', code: 'stila'},
     {name: 'Suncoat', code: 'suncoat'},

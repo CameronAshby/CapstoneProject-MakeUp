@@ -10,10 +10,23 @@ import {ApiService} from '../../service/api/api.service';
 })
 export class ProductPage implements OnInit {
 
+  products = [
+    {name: 'Blush', code: 'blush'},
+    {name: 'Bronzer', code: 'bronzer'},
+    {name: 'Eyebrow', code: 'eyebrow'},
+    {name: 'Eyeliner', code: 'eyeliner'},
+    {name: 'Eyeshadow', code: 'eyeshadow'},
+    {name: 'Foundation', code: 'foundation'},
+    {name: 'Lip Liner', code: 'lip_liner'},
+    {name: 'Lipstick', code: 'lipstick'},
+    {name: 'Mascara', code: 'mascara'},
+    {name: 'Nail Polish', code: 'nail_polish'}
+  ];
+
   id: string;
   results$: Observable<any>;
 
-  product = [];
+  productArray = [];
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
 
