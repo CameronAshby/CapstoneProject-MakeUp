@@ -25,6 +25,7 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.0.0",
     "@ionic/pro": "2.0.4",
+    "@types/cordova": "0.0.34",
     "angularfire2": "^5.1.1",
     "core-js": "^2.5.4",
     "firebase": "^5.8.3",

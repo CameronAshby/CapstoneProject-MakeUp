@@ -22,28 +22,28 @@ export class WelcomePagePage implements OnInit {
 
   registerGoogle(){
     let user = this.user;
-    this.loginService.signIn().then( data =>{
-      this.zone.run( ()=>{
-        user = {
-          name: data['user']['displayName'],
-          email: data['user']['email'],
-          cart: [],
-          profilePic: data['user']['photoURL']
-         }
-        });
-    });
+    // this.loginService.signIn().then( data =>{
+    //   this.zone.run( ()=>{
+    //     user = {
+    //       name: data['user']['displayName'],
+    //       email: data['user']['email'],
+    //       cart: [],
+    //       profilePic: data['user']['photoURL']
+    //      }
+    //     });
+    // });
   }
   registerEmail(){
     let user = this.user;
-    this.loginService.signIn().then( data =>{
-        user = {
-          name: '',
-          email: '',
-          cart: [],
-          password: '',
-          profilePic: ''
-        }
-      });
+    // this.loginService.signIn().then( data =>{
+    //     user = {
+    //       name: '',
+    //       email: '',
+    //       cart: [],
+    //       password: '',
+    //       profilePic: ''
+    //     }
+    //   });
   }
 
 

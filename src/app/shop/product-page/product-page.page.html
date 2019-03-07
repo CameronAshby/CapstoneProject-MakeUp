@@ -4,6 +4,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <div>Hi</div>
+<ion-content *ngIf="productId">
+  <div *ngIf="results$ | async as product">
+    <ion-card>
+      <ion-card-title>{{product.name}}</ion-card-title>
+    </ion-card>
+  </div>
 </ion-content>

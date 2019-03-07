@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Product} from '../../model/product';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,7 @@ export class ApiService {
     return filteredArray;
   }
 
-  getById(url) {
-    return this.http.get(url);
+  getById(id) {
+    return this.http.get(`http://makeup-api.herokuapp.com/api/v1/products/${id}.json`);
   }
 }
