@@ -40,6 +40,7 @@ const routes: Routes = [
   { path: 'qualities', loadChildren: './shop/qualities/qualities.module#QualitiesPageModule' },
   { path: 'search', loadChildren: './shop/search/search.module#SearchPageModule' },
   { path: 'product-page', loadChildren: './shop/product-page/product-page.module#ProductPagePageModule' },
+  { path: 'product-page/:id', loadChildren: './shop/product-page/product-page.module#ProductPagePageModule' },
 ];
 
 // path: 'something/:id'

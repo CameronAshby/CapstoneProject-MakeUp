@@ -8,7 +8,6 @@ import {Product} from '../../model/product';
 })
 export class ApiService {
   apiArray = [];
-  selectedItem: Product;
 
   constructor(private http : HttpClient) {
 
@@ -40,7 +39,7 @@ export class ApiService {
     return filteredArray;
   }
 
-  getById(url) {
-    return this.http.get(url);
+  getById(id) {
+    return this.http.get(`http://makeup-api.herokuapp.com/api/v1/products/${id}.json`);
   }
 }

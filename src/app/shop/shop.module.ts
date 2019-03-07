@@ -82,11 +82,7 @@ const routes: Routes = [
         path: 'product-page',
         children: [
           {
-            path: '',
-            loadChildren: './product-page/product-page.module#ProductPagePageModule'
-          },
-          {
-            path: ':id',
+            path: ':productId',
             loadChildren: './product-page/product-page.module#ProductPagePageModule'
           }
         ]

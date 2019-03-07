@@ -14,11 +14,7 @@
   <div *ngIf="results$ | async as productArray">
     <ion-card *ngFor="let item of productArray">
       <ion-card-title>{{item.name}}</ion-card-title>
-      <button (click)="showDetails(item.id); selectItem(item)">View Details</button>
+      <button (click)="showDetails(item.id)">View Details</button>
     </ion-card>
   </div>
-</ion-content>
-
-<ion-content *ngIf="api.selectedItem">
-  <div>Hi</div>
 </ion-content>

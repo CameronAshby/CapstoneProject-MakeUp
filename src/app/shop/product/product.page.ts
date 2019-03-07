@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {ApiService} from '../../service/api/api.service';
 import {Product} from '../../model/product';
+import {Pro} from '@ionic/pro';
 
 @Component({
   selector: 'app-product',
@@ -25,11 +26,8 @@ export class ProductPage implements OnInit {
   ];
 
   id: string;
-  selectedId: number;
   results$: Observable<any>;
-  getItem$: Observable<any>;
 
-  selectedItem: Product;
   productArray: Product[] = [];
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
@@ -40,22 +38,13 @@ export class ProductPage implements OnInit {
     if(this.id) {
       this.results$ = this.api.getByProduct(this.id);
     }
-
-    if(this.selectedId) {
-      this.getItem$ = this.api.getById(this.api.selectedItem.apiUrl);
-    }
   }
 
   changeMenu(id: string) {
     this.router.navigate(['shop','product',id]);
   }
 
-  showDetails(id: number) {
-    this.selectedId = id;
-    this.router.navigate(['shop','product', this.id, this.selectedId]);
-  }
-
-  selectItem(item) {
-    this.api.selectedItem = item;
+  showDetails(id: string) {
+    this.router.navigate(['shop','product-page',id]);
   }
 }
