@@ -52,6 +52,6 @@ export class QualitiesPage implements OnInit {
   }
 
   showDetails(id: string) {
-    this.router.navigate(['shop','product-page']);
+    this.router.navigate(['shop','product-page',id]);
   }
 }

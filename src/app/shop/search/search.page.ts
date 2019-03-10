@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {ApiService} from '../../service/api/api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -13,11 +14,15 @@ export class SearchPage implements OnInit {
 
   product: {};
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private router: Router) {
     this.product$ = this.api.initializeAPI();
   }
 
   ngOnInit() {
+  }
+
+  showDetails(id: string) {
+    this.router.navigate(['shop','product-page',id]);
   }
 
 }
