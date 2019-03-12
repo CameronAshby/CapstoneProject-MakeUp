@@ -34,15 +34,12 @@ export class ProductPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
     if(this.id) {
       this.results$ = this.api.getByProduct(this.id);
     }
   }
 
   ngOnDestroy() {
-    console.log('destroyed');
-
   }
 
   changeMenu(id: string) {
