@@ -9,5 +9,4 @@ export interface Product {
     id: number;
     apiUrl: string;
     colors: [];
-
 }
