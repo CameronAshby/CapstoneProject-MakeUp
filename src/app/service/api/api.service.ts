@@ -14,15 +14,15 @@ export class ApiService {
   }
 
   initializeAPI(): Observable<any> {
-    return this.http.get('http://makeup-api.herokuapp.com/api/v1/products.json');
+    return this.http.get('https://makeup-api.herokuapp.com/api/v1/products.json');
   }
 
   getByProduct(id): Observable<any> {
-    return this.http.get(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${id}`);
+    return this.http.get(`https://makeup-api.herokuapp.com/api/v1/products.json?product_type=${id}`);
   }
 
   getByBrand(id): Observable<any> {
-    return this.http.get(`http://makeup-api.herokuapp.com/api/v1/products.json?brand=${id}`);
+    return this.http.get(`https://makeup-api.herokuapp.com/api/v1/products.json?brand=${id}`);
   }
 
   getByQuality(quality) {
@@ -40,6 +40,6 @@ export class ApiService {
   }
 
   getById(id) {
-    return this.http.get(`http://makeup-api.herokuapp.com/api/v1/products/${id}.json`);
+    return this.http.get(`https://makeup-api.herokuapp.com/api/v1/products/${id}.json`);
   }
 }
