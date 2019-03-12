@@ -7,7 +7,7 @@ import {Product} from '../../model/product';
   providedIn: 'root'
 })
 export class ApiService {
-  apiArray = [];
+  apiArray: Product[] = [];
 
   constructor(private http : HttpClient) {
 

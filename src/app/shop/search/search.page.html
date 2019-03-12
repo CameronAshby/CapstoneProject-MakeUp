@@ -5,16 +5,10 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-content padding>
-    <div *ngIf="product$ | async as product">
-      <div *ngFor="let item of product">
-        <ion-card>
-          <ion-card-title>{{item.name}}</ion-card-title>
-          <ion-card-content>{{item.brand}}</ion-card-content>
-          <ion-card-content>${{item.price}}0</ion-card-content>
-          <img src="{{item.api_featured_image}}">
-        </ion-card>
-      </div>
-    </div>
+  <ion-content *ngIf="api.apiArray">
+    <ion-card *ngFor="let item of api.apiArray">
+      <ion-card-title>{{item.name}}</ion-card-title>
+      <button (click)="showDetails(item.id)">View Details</button>
+    </ion-card>
   </ion-content>
 </ion-content>

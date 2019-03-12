@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {ApiService} from '../../service/api/api.service';
@@ -10,7 +10,7 @@ import {Pro} from '@ionic/pro';
   templateUrl: './product.page.html',
   styleUrls: ['./product.page.scss'],
 })
-export class ProductPage implements OnInit {
+export class ProductPage implements OnInit, OnDestroy {
 
   products = [
     {name: 'Blush', code: 'blush'},
@@ -38,6 +38,11 @@ export class ProductPage implements OnInit {
     if(this.id) {
       this.results$ = this.api.getByProduct(this.id);
     }
+  }
+
+  ngOnDestroy() {
+    console.log('destroyed');
+
   }
 
   changeMenu(id: string) {

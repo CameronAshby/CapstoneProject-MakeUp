@@ -20,14 +20,14 @@ export class ShopPage implements OnInit {
 
   async ngOnInit() {
 
-    const loading = await this.loader.create();
-    loading.present().then(() => {
-      this.api.initializeAPI().subscribe((data) => {
-        this.api.apiArray = data;
-        console.log(data);
-        loading.dismiss();
-      })
-    });
+    // const loading = await this.loader.create();
+    // loading.present().then(() => {
+    //   this.api.initializeAPI().subscribe((data) => {
+    //     this.api.apiArray = data;
+    //     console.log(data);
+    //     loading.dismiss();
+    //   })
+    // });
   }
 
 }
