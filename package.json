@@ -27,6 +27,7 @@
     "@ionic/pro": "2.0.4",
     "@types/cordova": "0.0.34",
     "angularfire2": "^5.1.1",
+    "cordova-plugin-ionic": "^4.2.0",
     "core-js": "^2.5.4",
     "firebase": "^5.8.3",
     "rxjs": "~6.3.3",
