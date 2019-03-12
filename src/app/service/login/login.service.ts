@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 
 import { Observable } from 'rxjs';
 import {map} from "rxjs/operators";
@@ -9,23 +9,52 @@ import {
   DocumentChangeAction
 } from "@angular/fire/firestore";
 import {User} from "../../model/User";
+import {AngularFireAuth} from "angularfire2/auth";
+import { auth } from "firebase/app";
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginService implements OnInit{
+
+  currentUser: User;
+
 
   private userRef: AngularFirestoreDocument<User>;
   private usersRef: AngularFirestoreCollection<User>;
 
-  constructor(private db: AngularFirestore) {
+
+  constructor(private db: AngularFirestore, public afAuth: AngularFireAuth) {
     this.usersRef = this.db.collection<User>(`users`);
   }
-  getUserObservable(name: string): Observable<User> {
-    return this.db.doc<User>(`users/${name}`).valueChanges();
-  }
+ngOnInit(): void {
 
-  getCompaniesObservable(): Observable<User[]>{
+    }
+
+    googleSignIn(){
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
+        .then(data =>{
+          this.currentUser ={
+            name: data.user.displayName,
+            email: data.user.email,
+            cart: [],
+          }
+          console.log(data)
+        });
+    }
+
+    emailSignIn(email, password){
+    console.log(email);
+    console.log(password);
+    this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+        .then( data =>{
+          console.log(data)
+        })
+    }
+
+
+
+  getUsersObservable(): Observable<User[]>{
     return this.usersRef.snapshotChanges()
         .pipe(
             map((items: DocumentChangeAction<User>[]): User[] => {
@@ -47,13 +76,13 @@ export class LoginService {
         .then(_ => console.log(`Save user ${user.name}`));
   }
 
-  // editCompany(name: string, company: any) {
-  //   return this.companiesRef.doc(key).update(company)
+  // editUser(userId: string, user: any) {
+  //   return this.usersRef.doc(userId).update(user)
   //       .then(_ => console.log('Success on update'))
   //       .catch(error => console.log('update', error));
   // }
 
-  removeCompany(name: string) {
+  removeUser(name: string) {
     return this.usersRef.doc(name).delete()
         .then(_ => console.log('Success on remove'))
         .catch(error => console.log('remove', error));

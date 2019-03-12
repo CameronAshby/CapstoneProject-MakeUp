@@ -9,32 +9,27 @@ import {LoginService} from "../service/login/login.service";
 })
 export class WelcomePagePage implements OnInit {
   email: string;
+  name: string;
   password: string;
-  profilePic = '';
-  user;
 
-  constructor(private loginService: LoginService, private zone:NgZone) {
+  constructor(private loginService: LoginService, ) {
 
   }
 
   ngOnInit() {
   }
 
-  registerGoogle(){
-    let user = this.user;
-    // this.loginService.signIn().then( data =>{
-    //   this.zone.run( ()=>{
-    //     user = {
-    //       name: data['user']['displayName'],
-    //       email: data['user']['email'],
-    //       cart: [],
-    //       profilePic: data['user']['photoURL']
-    //      }
-    //     });
-    // });
+  setEmail(email){
+    this.email = email;
   }
-  registerEmail(){
-    let user = this.user;
+  updateName(name){
+    this.name = name;
+    console.log("update Name" + this.name)
+  }
+
+
+  // registerEmail(){
+    // let user = this.user;
     // this.loginService.signIn().then( data =>{
     //     user = {
     //       name: '',
@@ -44,7 +39,7 @@ export class WelcomePagePage implements OnInit {
     //       profilePic: ''
     //     }
     //   });
-  }
+  // }
 
 
 
