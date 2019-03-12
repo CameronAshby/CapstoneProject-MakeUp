@@ -9,7 +9,7 @@ import {
   DocumentChangeAction
 } from "@angular/fire/firestore";
 import {User} from "../../model/User";
-import {AngularFireAuth} from "@angular/fire/auth";
+import {AngularFireAuth} from "angularfire2/auth";
 import { auth } from "firebase/app";
 
 @Injectable({
@@ -17,16 +17,42 @@ import { auth } from "firebase/app";
 })
 export class LoginService implements OnInit{
 
+  currentUser: User;
+
+
   private userRef: AngularFirestoreDocument<User>;
   private usersRef: AngularFirestoreCollection<User>;
 
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, public afAuth: AngularFireAuth) {
     this.usersRef = this.db.collection<User>(`users`);
   }
 ngOnInit(): void {
 
     }
+
+    googleSignIn(){
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
+        .then(data =>{
+          this.currentUser ={
+            name: data.user.displayName,
+            email: data.user.email,
+            cart: [],
+          }
+          console.log(data)
+        });
+    }
+
+    emailSignIn(email, password){
+    console.log(email);
+    console.log(password);
+    this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+        .then( data =>{
+          console.log(data)
+        })
+    }
+
+
 
   getUsersObservable(): Observable<User[]>{
     return this.usersRef.snapshotChanges()
