@@ -39,16 +39,29 @@ export class LoginService implements OnInit{
             email: data.user.email,
             cart: [],
           };
-          console.log(data);
+          console.log(data)
         });
-  }
+    this.saveUser(this.currentUser);
+    console.log("saved user to fb");
+    }
 
-  emailSignIn(email, password){
+    emailSignIn(name, email, password){
+    console.log(email);
+    console.log(password);
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
         .then( data =>{
           console.log(data);
-        })
-  }
+            this.currentUser = {
+                name: name,
+                email: data.user.email,
+                cart: [],
+                password: password
+            }
+            console.log("password" + password);
+            console.log("display name" + this.currentUser.name);
+        });
+    this.saveUser(this.currentUser);
+    }
 
   logout() {
       this.afAuth.auth.signOut()

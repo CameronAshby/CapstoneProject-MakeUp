@@ -8,8 +8,8 @@ import {LoginService} from "../service/login/login.service";
   styleUrls: ['./welcome-page.page.scss'],
 })
 export class WelcomePagePage implements OnInit {
-  email: string;
   name: string;
+  email: string;
   password: string;
 
   constructor(public loginService: LoginService, ) {
