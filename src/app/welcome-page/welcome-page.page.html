@@ -18,7 +18,7 @@
         <input type="text" [(ngModel)]="name" placeholder="Name" id="name">
         <input type="email" [(ngModel)]="email" placeholder="email" id="email">
         <input type="password" [(ngModel)]="password" placeholder="password" id="password">
-        <ion-button (click)="loginService.emailSignIn(email, password)">Submit</ion-button>
+        <ion-button (click)="loginService.emailSignIn(name, email, password)">Submit</ion-button>
     <div>Or</div>
     <ion-button (click)="loginService.googleSignIn()">Sign in with Google</ion-button>
 
