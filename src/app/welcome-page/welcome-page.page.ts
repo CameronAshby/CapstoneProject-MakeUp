@@ -12,7 +12,7 @@ export class WelcomePagePage implements OnInit {
   email: string;
   password: string;
 
-  constructor(private loginService: LoginService, ) {
+  constructor(public loginService: LoginService, ) {
 
   }
 
@@ -24,7 +24,6 @@ export class WelcomePagePage implements OnInit {
   }
   updateName(name){
     this.name = name;
-    console.log("update Name" + this.name)
   }
 
 

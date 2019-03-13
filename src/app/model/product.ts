@@ -3,10 +3,10 @@ export interface Product {
     brand: string;
     price: number;
     tag_list: [];
-    imageLink: string;
+    image_link: string;
     productType: string;
     description: string;
     id: number;
     apiUrl: string;
-    colors: [];
+    product_colors: [];
 }

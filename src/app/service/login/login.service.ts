@@ -27,11 +27,11 @@ export class LoginService implements OnInit{
   constructor(private db: AngularFirestore, public afAuth: AngularFireAuth) {
     this.usersRef = this.db.collection<User>(`users`);
   }
-ngOnInit(): void {
+  ngOnInit(): void {
 
-    }
+  }
 
-    googleSignIn(){
+  googleSignIn(){
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
         .then(data =>{
           this.currentUser ={
@@ -63,7 +63,12 @@ ngOnInit(): void {
     this.saveUser(this.currentUser);
     }
 
-
+  logout() {
+      this.afAuth.auth.signOut()
+          .then(data => {
+              this.currentUser = null;
+          });
+  }
 
   getUsersObservable(): Observable<User[]>{
     return this.usersRef.snapshotChanges()
