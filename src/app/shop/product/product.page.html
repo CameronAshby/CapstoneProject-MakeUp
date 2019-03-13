@@ -11,10 +11,14 @@
 </ion-content>
 
 <ion-content *ngIf="id">
-  <div *ngIf="results$ | async as productArray">
-    <ion-card *ngFor="let item of productArray">
-      <ion-card-title>{{item.name}}</ion-card-title>
-      <button (click)="showDetails(item.id)">View Details</button>
+  <div *ngIf="results$ | async as productArray" class="productListContainer">
+    <ion-card *ngFor="let item of productArray" class="productListCard">
+      <img [src]="item.image_link" class="productImage">
+      <ion-card-title class="productTitle">{{item.name}}</ion-card-title>
+      <ion-card-content>{{item.brand}}</ion-card-content>
+      <ion-card-content>${{item.price}}0</ion-card-content>
+      <!--<ion-card-content *ngIf="item.product_colors"><p *ngFor="let color of item.product_colors">{{color.colour_name}}</p></ion-card-content>-->
+      <ion-button class="productButton" (click)="showDetails(item.id)">View Details</ion-button>
     </ion-card>
   </div>
 </ion-content>
