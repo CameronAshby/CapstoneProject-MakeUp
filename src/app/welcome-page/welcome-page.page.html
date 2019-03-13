@@ -7,15 +7,11 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-content padding *ngIf="!loginService.currentUser">
+    <div>
+      <img  src="../assets/btn_google_signin_dark_focus_web@2x.png" alt="">
+    </div>
 
-<ion-button>Hello!</ion-button>
-
-<div>
-  <img  src="../assets/btn_google_signin_dark_focus_web@2x.png" alt="">
-</div>
-
-
-<ion-content padding>
     <div>Sign in with password</div>
 
         <input type="text" [(ngModel)]="name" placeholder="Name" id="name">
@@ -29,4 +25,9 @@
     <h1>Ready to Shop!</h1>
   </div>
 
+</ion-content>
+
+<ion-content *ngIf="loginService.currentUser">
+    <div>Hi {{loginService.currentUser.name}}!</div>
+    <ion-button (click)="loginService.logout()">Logout</ion-button>
 </ion-content>

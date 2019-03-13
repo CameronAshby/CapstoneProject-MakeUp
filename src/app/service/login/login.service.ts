@@ -27,32 +27,35 @@ export class LoginService implements OnInit{
   constructor(private db: AngularFirestore, public afAuth: AngularFireAuth) {
     this.usersRef = this.db.collection<User>(`users`);
   }
-ngOnInit(): void {
+  ngOnInit(): void {
 
-    }
+  }
 
-    googleSignIn(){
+  googleSignIn(){
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
         .then(data =>{
           this.currentUser ={
             name: data.user.displayName,
             email: data.user.email,
             cart: [],
-          }
-          console.log(data)
+          };
+          console.log(data);
         });
-    }
+  }
 
-    emailSignIn(email, password){
-    console.log(email);
-    console.log(password);
+  emailSignIn(email, password){
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
         .then( data =>{
-          console.log(data)
+          console.log(data);
         })
-    }
+  }
 
-
+  logout() {
+      this.afAuth.auth.signOut()
+          .then(data => {
+              this.currentUser = null;
+          });
+  }
 
   getUsersObservable(): Observable<User[]>{
     return this.usersRef.snapshotChanges()
