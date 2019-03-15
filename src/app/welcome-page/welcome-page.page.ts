@@ -1,6 +1,5 @@
-
 import {Component, NgZone, OnInit} from '@angular/core';
-import {LoginService} from "../service/login/login.service";
+import {LoginService} from '../service/login/login.service';
 
 @Component({
   selector: 'app-welcome-page',
@@ -12,35 +11,24 @@ export class WelcomePagePage implements OnInit {
   email: string;
   password: string;
 
-  constructor(public loginService: LoginService, ) {
+  constructor(public loginService: LoginService,) {
 
   }
 
   ngOnInit() {
   }
 
-  setEmail(email){
+  setEmail(email) {
     this.email = email;
   }
-  updateName(name){
+
+  updateName(name) {
     this.name = name;
   }
 
-
-  // registerEmail(){
-    // let user = this.user;
-    // this.loginService.signIn().then( data =>{
-    //     user = {
-    //       name: '',
-    //       email: '',
-    //       cart: [],
-    //       password: '',
-    //       profilePic: ''
-    //     }
-    //   });
-  // }
-
-
+  setUserName(name) {
+    this.loginService.userName = name;
+  }
 
 }
 

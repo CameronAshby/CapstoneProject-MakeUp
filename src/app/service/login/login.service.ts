@@ -18,6 +18,7 @@ import { auth } from "firebase/app";
 export class LoginService implements OnInit{
 
   currentUser: User;
+  userName: string;
 
 
   private userRef: AngularFirestoreDocument<User>;
@@ -31,36 +32,33 @@ export class LoginService implements OnInit{
 
   }
 
-  googleSignIn(){
+  googleSignIn() {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
-        .then(data =>{
-          this.currentUser ={
+        .then(data => {
+          this.currentUser = {
             name: data.user.displayName,
             email: data.user.email,
             cart: [],
           };
-          console.log(data)
+          console.log(data);
+            this.saveUser(this.currentUser);
         });
-    this.saveUser(this.currentUser);
     console.log("saved user to fb");
     }
 
-    emailSignIn(name, email, password){
-    console.log(email);
-    console.log(password);
+    emailSignIn(email, password) {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-        .then( data =>{
-          console.log(data);
+        .then( data => {
             this.currentUser = {
-                name: name,
+                name: this.userName,
                 email: data.user.email,
                 cart: [],
                 password: password
-            }
+            };
             console.log("password" + password);
             console.log("display name" + this.currentUser.name);
+            this.saveUser(this.currentUser);
         });
-    this.saveUser(this.currentUser);
     }
 
   logout() {
@@ -88,8 +86,7 @@ export class LoginService implements OnInit{
   }
 
   saveUser(user: User) {
-    return this.usersRef.add(user)
-        .then(_ => console.log(`Save user ${user.name}`));
+      this.usersRef.doc(this.afAuth.auth.currentUser.email).set(this.currentUser);
   }
 
   // editUser(userId: string, user: any) {
