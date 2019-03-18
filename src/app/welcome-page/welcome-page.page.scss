@@ -1,8 +1,9 @@
 
-image{
-  width:50px;
+image {
+  width: 50px;
   height: 50px;
 }
+
 #signin_button {
   width: 200px;
   display: block;
@@ -21,13 +22,28 @@ image{
   height: 100%;
 }
 
+input{
+  padding: 10px;
+  margin: auto auto 10px auto;
+}
+#orDiv{
+  margin: auto;
+}
 
-  #title {
-    font-family: 'Shrikhand', sans-serif;
-    text-align: center;
-    color: #fff;
-    margin: 0;
-    padding-top: 20%;
-    font-size: 50px;
-  }
-
+.signInCard{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+#emailSignInbtn{
+  width: 50%;
+  margin: auto;
+}
+#welcomeContent{
+  margin: auto;
+  align-items: center;
+}
+ion-card-header{
+  margin: auto;
+}
