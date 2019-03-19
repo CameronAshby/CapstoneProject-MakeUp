@@ -1,3 +1,12 @@
 * {
   color: #442C2E;
 }
+
+ion-toolbar, ion-tab-bar {
+  --background: #FEEAE6;
+}
+
+ion-tab-button {
+  margin: 0 1px;
+  border: 1px solid #FEDBD0;
+}
