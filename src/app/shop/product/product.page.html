@@ -5,20 +5,24 @@
 </ion-header>
 
 <ion-content padding *ngIf="!id">
-  <ion-card *ngFor="let product of products" (click)="changeMenu(product.code)">
-    <ion-card-title>{{product.name}}</ion-card-title>
-  </ion-card>
+  <div class="productListContainer">
+    <ion-card *ngFor="let product of products" (click)="changeMenu(product.code)" class="productListCard">
+      <img class="productImage" [src]="product.image" alt="">
+      <ion-card-title class="productName">{{product.name}}</ion-card-title>
+    </ion-card>
+  </div>
 </ion-content>
 
 <ion-content *ngIf="id">
   <div *ngIf="results$ | async as productArray" class="productListContainer">
     <ion-card *ngFor="let item of productArray" class="productListCard">
-      <img [src]="item.image_link" class="productImage">
-      <ion-card-title class="productTitle">{{item.name}}</ion-card-title>
-      <ion-card-content>{{item.brand}}</ion-card-content>
-      <ion-card-content>${{item.price}}0</ion-card-content>
-      <!--<ion-card-content *ngIf="item.product_colors"><p *ngFor="let color of item.product_colors">{{color.colour_name}}</p></ion-card-content>-->
-      <ion-button class="productButton" (click)="showDetails(item.id)">View Details</ion-button>
+      <img [src]="item.image_link !== '' ? item.image_link : '../../../assets/placeholder.jpg'" alt="API Image Not Available" class="productImage">
+      <div class="productTitle">{{item.name}}</div>
+      <div class="productInfo">{{item.brand}} | ${{(item.price === '0.0' || item.price === null) ? '5.0' : item.price}}0</div>
+      <div class="buttonContainer">
+        <ion-button class="productButton" (click)="showDetails(item.id)">View Details</ion-button>
+        <ion-button class="productButton">Add To Cart</ion-button>
+      </div>
     </ion-card>
   </div>
 </ion-content>

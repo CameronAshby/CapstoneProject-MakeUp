@@ -15,7 +15,7 @@ export class SearchPage implements OnInit {
 
   product: {};
 
-  constructor(private api: ApiService, private router: Router, private loader: LoadingController) {
+  constructor(public api: ApiService, private router: Router, private loader: LoadingController) {
     this.product$ = this.api.initializeAPI();
   }
 
