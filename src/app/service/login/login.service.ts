@@ -56,7 +56,7 @@ export class LoginService implements OnInit{
                 email: data.user.email,
                 cart: [],
                 password: password
-            }
+            };
             console.log("password" + password);
             console.log("display name" + this.currentUser.name);
         });

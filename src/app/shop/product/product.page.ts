@@ -13,16 +13,16 @@ import {Pro} from '@ionic/pro';
 export class ProductPage implements OnInit, OnDestroy {
 
   products = [
-    {name: 'Blush', code: 'blush'},
-    {name: 'Bronzer', code: 'bronzer'},
-    {name: 'Eyebrow', code: 'eyebrow'},
-    {name: 'Eyeliner', code: 'eyeliner'},
-    {name: 'Eyeshadow', code: 'eyeshadow'},
-    {name: 'Foundation', code: 'foundation'},
-    {name: 'Lip Liner', code: 'lip_liner'},
-    {name: 'Lipstick', code: 'lipstick'},
-    {name: 'Mascara', code: 'mascara'},
-    {name: 'Nail Polish', code: 'nail_polish'}
+    {name: 'Blush', code: 'blush', image: '../../../assets/productImages/Blush.jpg'},
+    {name: 'Bronzer', code: 'bronzer', image: '../../../assets/productImages/bronzer.jpg'},
+    {name: 'Eyebrow', code: 'eyebrow', image: '../../../assets/productImages/eyebrow.png'},
+    {name: 'Eyeliner', code: 'eyeliner', image: '../../../assets/productImages/eyeliner.jpg'},
+    {name: 'Eyeshadow', code: 'eyeshadow', image: '../../../assets/productImages/eyeshadow.jpg'},
+    {name: 'Foundation', code: 'foundation', image: '../../../assets/productImages/foundation.jpg'},
+    {name: 'Lip Liner', code: 'lip_liner', image: '../../../assets/productImages/lipliner.jpeg'},
+    {name: 'Lipstick', code: 'lipstick', image: '../../../assets/productImages/lipstick.jpg'},
+    {name: 'Mascara', code: 'mascara', image: '../../../assets/productImages/mascara.jpg'},
+    {name: 'Nail Polish', code: 'nail_polish', image: '../../../assets/productImages/nailpolish.jpg'}
   ];
 
   id: string;
