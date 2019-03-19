@@ -60,9 +60,9 @@ export class LoginService implements OnInit {
                 };
                 console.log("password" + password);
                 console.log("display name" + this.currentUser.name);
-                if(this.checkDuplicateUser(this.currentUser.email)){
-                    this.saveUser(this.currentUser);
-                }
+                // if(this.checkDuplicateUser(this.currentUser.email)){
+                //     this.saveUser(this.currentUser);
+                // }
             });
     }
 
@@ -118,12 +118,12 @@ export class LoginService implements OnInit {
         .catch(error => console.log('remove', error));
   }
 
-  checkDuplicateUser(email): boolean {
-        this.getUsersObservable().subscribe( data => {
-            this.userArray = data;
-            this.userArray.forEach( user =>{
-               return user.email === email;
-            });
-        })
+  checkDuplicateUser(email){
+        // this.getUsersObservable().subscribe( data => {
+        //     this.userArray = data;
+        //     this.userArray.forEach( user =>{
+        //        return user.email === email;
+        //     });
+        // })
     }
 }
