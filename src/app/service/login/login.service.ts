@@ -19,6 +19,8 @@ export class LoginService implements OnInit {
 
     currentUser: User;
     userName: string;
+    userArray: User[];
+    duplicate: boolean;
 
 
     private userRef: AngularFirestoreDocument<User>;
@@ -58,7 +60,9 @@ export class LoginService implements OnInit {
                 };
                 console.log("password" + password);
                 console.log("display name" + this.currentUser.name);
-                this.saveUser(this.currentUser);
+                if(this.checkDuplicateUser(this.currentUser.email)){
+                    this.saveUser(this.currentUser);
+                }
             });
     }
 
@@ -113,4 +117,13 @@ export class LoginService implements OnInit {
         .then(_ => console.log('Success on remove'))
         .catch(error => console.log('remove', error));
   }
+
+  checkDuplicateUser(email): boolean {
+        this.getUsersObservable().subscribe( data => {
+            this.userArray = data;
+            this.userArray.forEach( user =>{
+               return user.email === email;
+            });
+        })
+    }
 }
