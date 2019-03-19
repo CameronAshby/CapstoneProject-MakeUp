@@ -1,5 +1,7 @@
-import {Component, NgZone, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../service/login/login.service';
+import {forEach} from "@firebase/util";
+import {User} from "../model/User";
 
 @Component({
   selector: 'app-welcome-page',
@@ -10,8 +12,11 @@ export class WelcomePagePage implements OnInit {
   name: string;
   email: string;
   password: string;
+  isNewUser: boolean = false;
+  array: [];
+  fbUserArray;
 
-  constructor(public loginService: LoginService,) {
+  constructor(public loginService: LoginService) {
 
   }
 
@@ -30,6 +35,27 @@ export class WelcomePagePage implements OnInit {
     this.loginService.userName = name;
   }
 
+  newUser() {
+    this.isNewUser = true;
+  }
+
+  saveNewUser(name, email, password) {
+    this.loginService.getUsersObservable().subscribe(users => {
+      this.fbUserArray = users;
+
+    this.fbUserArray.forEach( user =>{
+      if (user.email === email){
+        console.log("That email is already being used");
+        return;
+        }
+      });
+    this.loginService.userName = name;
+      this.loginService.emailSignIn(email, password);
+      console.log("New user signed in with email is " + this.loginService.userName);
+
+    this.isNewUser = false;
+    });
+  }
 }
 
 
