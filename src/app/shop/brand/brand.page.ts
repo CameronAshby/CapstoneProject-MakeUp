@@ -23,7 +23,7 @@ export class BrandPage implements OnInit {
     {name: 'Cargo Cosmetics', code: 'cargo cosmetics', image: '../../../assets/brandImages/cargoCosmetics.jpeg'},
     {name: 'China Glaze', code: 'china glaze', image: '../../../assets/brandImages/chinaGlaze.png'},
     {name: 'Clinique', code: 'clinique', image: '../../../assets/brandImages/clinique.png'},
-    {name: 'Coastal Classic Creation', code: 'coastal classic creation', image: '../../../assets/brandImages/coastalClassicCreation.jpg'},
+    {name: 'Coastal Classic Creation', code: 'coastal classic creation', image: '../../../assets/brandImages/coastalClassicCreations.jpg'},
     {name: 'Colourpop', code: 'colourpop', image: '../../../assets/brandImages/colourpop.jpeg'},
     {name: 'Covergirl', code: 'covergirl', image: '../../../assets/brandImages/covergirl.png'},
     {name: 'Dalish', code: 'dalish', image: '../../../assets/brandImages/dalish.png'},
