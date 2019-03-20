@@ -45,7 +45,7 @@ export class LoginService implements OnInit {
                 };
                 console.log(data);
                 this.saveUser(this.currentUser);
-            });
+            }).catch(error => console.log('Error logging in...', error));
         console.log("saved user to fb");
     }
 
@@ -63,7 +63,7 @@ export class LoginService implements OnInit {
                 // if(this.checkDuplicateUser(this.currentUser.email)){
                 //     this.saveUser(this.currentUser);
                 // }
-            });
+            }).catch(error => console.log('Error logging in...', error));
     }
 
     emailSignIn(email, password){
