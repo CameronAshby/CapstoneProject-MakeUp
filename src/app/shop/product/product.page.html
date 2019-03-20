@@ -8,7 +8,7 @@
   <div class="productListContainer">
     <ion-card *ngFor="let product of products" (click)="changeMenu(product.code)" class="productListCard">
       <img class="productImage" [src]="product.image" alt="">
-      <ion-card-title class="productName">{{product.name}}</ion-card-title>
+      <ion-button class="productName">{{product.name}}</ion-button>
     </ion-card>
   </div>
 </ion-content>
@@ -18,7 +18,7 @@
     <ion-card *ngFor="let item of productArray" class="productListCard">
       <img [src]="item.image_link !== '' ? item.image_link : '../../../assets/placeholder.jpg'" alt="API Image Not Available" class="productImage">
       <div class="productTitle">{{item.name}}</div>
-      <div class="productInfo">{{item.brand}} | ${{(item.price === '0.0' || item.price === null) ? '5.0' : item.price}}0</div>
+      <div class="productInfo">{{item.brand !== null ? item.brand : 'maybelline'}} | ${{(item.price === '0.0' || item.price === null) ? '5.0' : item.price}}0</div>
       <div class="buttonContainer">
         <ion-button class="productButton" (click)="showDetails(item.id)">View Details</ion-button>
         <ion-button class="productButton">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
