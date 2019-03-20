@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../service/login/login.service';
 import {forEach} from "@firebase/util";
 import {User} from "../model/User";
+import {Tournament} from "../../../../angularTest/ionic/elite-scheduler-app/src/app/models/tournament";
 
 @Component({
   selector: 'app-welcome-page',
@@ -54,6 +55,9 @@ export class WelcomePagePage implements OnInit {
 
     this.isNewUser = false;
     });
+  }
+  cancel(){
+    this.isNewUser = false;
   }
 }
 

@@ -43,10 +43,17 @@ export class LoginService implements OnInit {
                     email: data.user.email,
                     cart: [],
                 };
-                console.log(data);
-                this.saveUser(this.currentUser);
+                this.getUsersObservable().subscribe( data => {
+                    this.userArray = data;
+                    this.userArray.forEach( user =>{
+                        if(user.email !== this.currentUser.email){
+                           return;
+                        }
+
+                    });
+                })
+
             }).catch(error => console.log('Error logging in...', error));
-        console.log("saved user to fb");
     }
 
     newUser(email, password) {
@@ -58,11 +65,6 @@ export class LoginService implements OnInit {
                     cart: [],
                     password: password
                 };
-                console.log("password" + password);
-                console.log("display name" + this.currentUser.name);
-                // if(this.checkDuplicateUser(this.currentUser.email)){
-                //     this.saveUser(this.currentUser);
-                // }
             }).catch(error => console.log('Error logging in...', error));
     }
 
@@ -118,12 +120,19 @@ export class LoginService implements OnInit {
         .catch(error => console.log('remove', error));
   }
 
-  checkDuplicateUser(email){
-        // this.getUsersObservable().subscribe( data => {
-        //     this.userArray = data;
-        //     this.userArray.forEach( user =>{
-        //        return user.email === email;
-        //     });
-        // })
-    }
+  // checkDuplicateUser(email): boolean {
+  //       let result;
+  //       this.getUsersObservable().subscribe( data => {
+  //           this.userArray = data;
+  //           this.userArray.forEach( user =>{
+  //              if(user.email === email){
+  //                 result = true;
+  //              }
+  //              else{
+  //                  result =  false;
+  //              }
+  //              return result;
+  //           });
+  //       })
+  //   }
 }

@@ -16,6 +16,7 @@
                 <input type="email" [(ngModel)]="email" placeholder="email" id="newEmail">
                 <input type="password" [(ngModel)]="password" placeholder="password" id="newPassword">
                 <ion-button (click)="loginService.newUser(email, password); setUserName(name)">Submit</ion-button>
+                <ion-button (click)="cancel()">Cancel</ion-button>
             </ion-card-content>
         </ion-card>
 
