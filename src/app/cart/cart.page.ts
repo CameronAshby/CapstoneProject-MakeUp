@@ -20,7 +20,8 @@ export class CartPage implements OnInit {
     this.firebaseService.getCartObservable().subscribe( user => {
        user.forEach(docUser => {
            if (docUser.email === this.loginService.currentUser.email) {
-            console.log("cart user" + docUser.email)
+               this.cartArray = docUser.cart;
+            console.log("cart" + docUser.cart)
            }
        });
         return user
