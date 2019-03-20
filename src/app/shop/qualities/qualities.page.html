@@ -5,9 +5,12 @@
 </ion-header>
 
 <ion-content padding *ngIf="!id">
-  <ion-card *ngFor="let quality of qualities" (click)="changeMenu(quality.code)">
-    <ion-card-title>{{quality.name}}</ion-card-title>
-  </ion-card>
+  <div class="qualitiesContainer">
+    <ion-card *ngFor="let quality of qualities" (click)="changeMenu(quality.code)" class="qualitiesCard">
+      <img class="qualitiesImage" [src]="quality.image" alt="">
+      <ion-card-title>{{quality.name}}</ion-card-title>
+    </ion-card>
+  </div>
 </ion-content>
 
 <ion-content *ngIf="id">
