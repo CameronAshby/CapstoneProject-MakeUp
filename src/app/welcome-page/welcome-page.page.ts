@@ -58,6 +58,8 @@ export class WelcomePagePage implements OnInit {
   }
   cancel(){
     this.isNewUser = false;
+    this.email = '';
+    this.password = '';
   }
 }
 
