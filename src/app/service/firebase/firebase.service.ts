@@ -9,6 +9,7 @@ import {LoginService} from '../login/login.service';
 import {User} from '../../model/User';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {ApiService} from '../api/api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +18,14 @@ export class FirebaseService {
 
   private cartRef: AngularFirestoreCollection<User>;
 
-  constructor(private afs: AngularFirestore, private loginService: LoginService) {
+  constructor(private afs: AngularFirestore, private loginService: LoginService, public apiService: ApiService) {
     this.cartRef = this.afs.collection<User>(`users`);
   }
 
   getCartItems() {
     this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).ref.onSnapshot(doc => {
-      console.log(this.loginService.currentUser = doc.data() as User);
-      return doc;
+       console.log(this.loginService.currentUser = doc.data() as User);
+       this.apiService.cartArray = (doc.data() as User).cart;
     });
   }
   getCartObservable(): Observable<User[]> {
