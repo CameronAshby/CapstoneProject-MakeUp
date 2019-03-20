@@ -13,7 +13,6 @@ export class WelcomePagePage implements OnInit {
   email: string;
   password: string;
   isNewUser: boolean = false;
-  array: [];
   fbUserArray;
 
   constructor(public loginService: LoginService) {
@@ -50,7 +49,7 @@ export class WelcomePagePage implements OnInit {
         }
       });
     this.loginService.userName = name;
-      this.loginService.emailSignIn(email, password);
+      this.loginService.newUser(email, password);
       console.log("New user signed in with email is " + this.loginService.userName);
 
     this.isNewUser = false;

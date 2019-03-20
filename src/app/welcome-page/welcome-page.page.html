@@ -15,17 +15,16 @@
                 <input type="text" [(ngModel)]="name" placeholder="Name" id="newName">
                 <input type="email" [(ngModel)]="email" placeholder="email" id="newEmail">
                 <input type="password" [(ngModel)]="password" placeholder="password" id="newPassword">
-                <ion-button (click)="saveNewUser(name, email, password)">Submit</ion-button>
+                <ion-button (click)="loginService.newUser(email, password); setUserName(name)">Submit</ion-button>
             </ion-card-content>
         </ion-card>
 
 
         <ion-card *ngIf="!isNewUser" class="signInCard">
-            <ion-card-header>Sign in with password</ion-card-header>
-            <input type="text" [(ngModel)]="name" placeholder="Name" id="name">
+            <ion-card-header>Sign in with email</ion-card-header>
             <input type="email" [(ngModel)]="email" placeholder="email" id="email">
             <input type="password" [(ngModel)]="password" placeholder="password" id="password">
-            <ion-button id="emailSignInbtn" (click)="loginService.emailSignIn(email, password); setUserName(name)">Submit</ion-button>
+            <ion-button id="emailSignInbtn" (click)="loginService.emailSignIn(email, password); setUserName(name)">Log In</ion-button>
             <div id="orDiv">Or</div>
 
             <div>
