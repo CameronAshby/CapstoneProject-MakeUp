@@ -4,8 +4,14 @@
 
 ion-header * {
   --background: #FEDBD0;
+  font-family: 'Poiret One', cursive;
 }
 
 ion-menu {
   --width: 50%;
+  font-family: 'Poiret One', cursive;
+}
+
+ion-list * {
+  font-family: 'Poiret One', cursive;
 }
