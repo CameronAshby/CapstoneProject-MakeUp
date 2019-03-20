@@ -5,9 +5,12 @@
 </ion-header>
 
 <ion-content padding *ngIf="!id">
-  <ion-card *ngFor="let brand of brands" (click)="changeMenu(brand.code)">
-    <ion-card-title>{{brand.name}}</ion-card-title>
-  </ion-card>
+  <div class="brandListContainer">
+    <ion-card *ngFor="let brand of brands" (click)="changeMenu(brand.code)" class="brandListCard">
+      <img class="brandImage" [src]="brand.image" alt="">
+      <ion-button class="brandName">{{brand.name}}</ion-button>
+    </ion-card>
+  </div>
 </ion-content>
 
 <ion-content *ngIf="id">
