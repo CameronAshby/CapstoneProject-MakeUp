@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../service/firebase/firebase.service';
+import {LoginService} from '../service/login/login.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,10 +9,21 @@ import {FirebaseService} from '../service/firebase/firebase.service';
 })
 export class CartPage implements OnInit {
 
-  constructor(private firebaseService: FirebaseService) { }
+  cartArray: [];
+
+  constructor(private firebaseService: FirebaseService, private loginService: LoginService) { }
 
   ngOnInit() {
     this.firebaseService.getCartItems();
   }
-
+ getCartArray() {
+    this.firebaseService.getCartObservable().subscribe( user => {
+       user.forEach(docUser => {
+           if (docUser.email === this.loginService.currentUser.email) {
+            console.log("cart user" + docUser.email)
+           }
+       });
+        return user
+    })
+ }
 }

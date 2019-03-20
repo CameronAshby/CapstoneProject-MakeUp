@@ -1,16 +1,16 @@
 import {Injectable, OnInit} from '@angular/core';
 
 import {Observable} from 'rxjs';
-import {map} from "rxjs/operators";
+import {map} from 'rxjs/operators';
 import {
     AngularFirestore,
     AngularFirestoreCollection,
     AngularFirestoreDocument,
     DocumentChangeAction
-} from "@angular/fire/firestore";
-import {User} from "../../model/User";
-import {AngularFireAuth} from "angularfire2/auth";
-import {auth} from "firebase/app";
+} from '@angular/fire/firestore';
+import {User} from '../../model/User';
+import {AngularFireAuth} from 'angularfire2/auth';
+import {auth} from 'firebase/app';
 
 @Injectable({
     providedIn: 'root'
@@ -20,8 +20,6 @@ export class LoginService implements OnInit {
     currentUser: User;
     userName: string;
     userArray: User[];
-    duplicate: boolean;
-
 
     private userRef: AngularFirestoreDocument<User>;
     private usersRef: AngularFirestoreCollection<User>;
@@ -43,10 +41,22 @@ export class LoginService implements OnInit {
                     email: data.user.email,
                     cart: [],
                 };
-                console.log(data);
-                this.saveUser(this.currentUser);
-            }).catch(error => console.log('Error logging in...', error));
-        console.log("saved user to fb");
+                this.getUsersObservable().subscribe( data => {
+                    this.userArray = data;
+                    this.userArray.forEach( user =>{
+                        if(user.email !== this.currentUser.email){
+                           return;
+                        }
+
+                    });
+                })
+
+            }).catch(error => {
+            console.log('Error logging in...', error);
+            this.errorMessage(error);
+
+
+        })
     }
 
     newUser(email, password) {
@@ -58,12 +68,11 @@ export class LoginService implements OnInit {
                     cart: [],
                     password: password
                 };
-                console.log("password" + password);
-                console.log("display name" + this.currentUser.name);
-                // if(this.checkDuplicateUser(this.currentUser.email)){
-                //     this.saveUser(this.currentUser);
-                // }
-            }).catch(error => console.log('Error logging in...', error));
+                this.saveUser(this.currentUser);
+            }).catch(error => {
+            console.log('Error logging in...', error);
+            this.errorMessage(error);
+        });
     }
 
     emailSignIn(email, password){
@@ -74,8 +83,11 @@ export class LoginService implements OnInit {
                 email: data.user.email,
                 cart: [],
             };
+        }).catch(error => {
+            console.log('Error logging in...', error);
+            this.errorMessage(error);
         });
-        console.log("email sign in");
+        console.log('email sign in');
     }
 
     logout() {
@@ -112,18 +124,13 @@ export class LoginService implements OnInit {
   //       .catch(error => console.log('update', error));
   // }
 
-  removeUser(name: string) {
-    return this.usersRef.doc(name).delete()
+  removeUser(email: string) {
+    return this.usersRef.doc(email).delete()
         .then(_ => console.log('Success on remove'))
         .catch(error => console.log('remove', error));
   }
+  errorMessage(error) {
+      return alert(error.message);
+  }
 
-  checkDuplicateUser(email){
-        // this.getUsersObservable().subscribe( data => {
-        //     this.userArray = data;
-        //     this.userArray.forEach( user =>{
-        //        return user.email === email;
-        //     });
-        // })
-    }
 }

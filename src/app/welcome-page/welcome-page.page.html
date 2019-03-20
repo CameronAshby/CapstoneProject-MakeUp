@@ -16,6 +16,7 @@
                 <input type="email" [(ngModel)]="email" placeholder="email" id="newEmail">
                 <input type="password" [(ngModel)]="password" placeholder="password" id="newPassword">
                 <ion-button (click)="loginService.newUser(email, password); setUserName(name)">Submit</ion-button>
+                <ion-button (click)="cancel()">Cancel</ion-button>
             </ion-card-content>
         </ion-card>
 
@@ -31,6 +32,8 @@
                 <img id="signin_button" (click)="loginService.googleSignIn()"
                      src="../../assets/btn_google_signin_dark_focus_web@2x.png" alt="">
             </div>
+
+
             <div>
                 <ion-button (click)="newUser()"> New User </ion-button>
             </div>
@@ -40,5 +43,5 @@
 
 <ion-content *ngIf="loginService.currentUser">
     <div>Hi {{loginService.currentUser.name}}!</div>
-    <ion-button (click)="loginService.logout()">Logout</ion-button>
+    <ion-button (click)="loginService.logout(); cancel()">Logout</ion-button>
 </ion-content>
