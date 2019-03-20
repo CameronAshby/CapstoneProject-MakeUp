@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {ApiService} from '../../service/api/api.service';
 import {Product} from '../../model/product';
 import {Pro} from '@ionic/pro';
+import {LoginService} from '../../service/login/login.service';
 
 @Component({
   selector: 'app-product',
@@ -30,7 +31,7 @@ export class ProductPage implements OnInit, OnDestroy {
 
   productArray: Product[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, public loginService: LoginService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
