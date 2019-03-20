@@ -1,4 +1,31 @@
 * {
   color: #442C2E;
-  --background: #FEEAE6;
+
+}
+
+.brandListCard {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brandListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.brandImage {
+  width: 215px;
+  height: 150px;
+  margin: 20px 10px 10px 10px;
+  border: 2px solid #DCDCDC;
+}
+
+.brandName {
+  margin: 10px 10px 20px 10px;
+  color: #442C2E;
+  background: #FEDBD0;
 }
