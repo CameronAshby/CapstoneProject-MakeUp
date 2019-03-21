@@ -12,16 +12,17 @@ import {Product} from '../model/product';
 export class CartPage implements OnInit {
 
 
-  constructor(private firebaseService: FirebaseService, public loginService: LoginService, private router: Router) {
+  constructor(public firebaseService: FirebaseService, public loginService: LoginService, private router: Router) {}
+
+  ionViewDidEnter() {
       if(this.loginService.currentUser) {
           this.firebaseService.getCartItems()
+      }
+      else {
+          this.router.navigate(['/welcome-page']);
       }
   }
 
   ngOnInit() {
-      this.getCartArray();
-  }
-  getCartArray() {
-      console.log(this.firebaseService.cartArray);
   }
 }

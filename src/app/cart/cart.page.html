@@ -7,34 +7,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
-  <!--<app-welcome-page *ngIf="!loginService.currentUser"></app-welcome-page>-->
-  <!--<ion-button (click)="getCartArray()">see cart</ion-button>-->
-
-  <!--<ion-card *ngIf="!loginService.currentUser" id="logIn">-->
-    <!--<ion-card-header> New User </ion-card-header>-->
-    <!--<ion-card-content>-->
-      <!--<input type="text" [(ngModel)]="name" placeholder="Name" id="newName">-->
-      <!--<input type="email" [(ngModel)]="email" placeholder="email" id="newEmail">-->
-      <!--<input type="password" [(ngModel)]="password" placeholder="password" id="newPassword">-->
-      <!--<ion-button (click)="loginService.newUser(email, password); setUserName(name)">Submit</ion-button>-->
-      <!--<ion-button (click)="cancel()">Cancel</ion-button>-->
-    <!--</ion-card-content>-->
-  <!--</ion-card>-->
-
-  <ion-card *ngIf="!loginService.currentUser" class="notLoggedIn">Log In Please </ion-card>
-
-  <div *ngIf="loginService.currentUser" class="loggedIn">
+<ion-content *ngIf="loginService.currentUser">
+  <div class="loggedIn">
     <h1> {{ loginService.currentUser.name }}  's Shopping Cart</h1>
-    <button (click)="firebaseService.addToCart('C')">cart</button>
     <ion-card id="cartCard">
       <ion-card *ngFor="let item of firebaseService.cartArray">
-        Item
+        {{item}}
       </ion-card>
     </ion-card>
   </div>
-
-
-
 </ion-content>
