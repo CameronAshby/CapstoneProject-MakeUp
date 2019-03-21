@@ -4,11 +4,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-content *ngIf="api.apiArray">
-    <ion-card *ngFor="let item of api.apiArray">
-      <ion-card-title>{{item.name}}</ion-card-title>
-      <button (click)="showDetails(item.id)">View Details</button>
+<ion-content *ngIf="api.apiArray">
+  <div *ngIf="product$ | async as productList" class="searchListContainer">
+    <ion-card *ngFor="let product of productList" class="searchListCard">
+      <img [src]="product.image_link !== '' ? product.image_link : '../../../assets/placeholder.jpg'" alt="API Image Not Available" class="searchImage">
+      <div class="searchTitle">{{product.name}}</div>
+      <div class="searchInfo">{{product.brand !== null ? product.brand : 'maybelline'}} | ${{(product.price === '0.0' || product.price === null) ? '5.0' : product.price}}0</div>
+      <div class="buttonContainer">
+        <ion-button class="searchButton" (click)="showDetails(product.id)">View Details</ion-button>
+        <ion-button class="searchButton">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
+      </div>
     </ion-card>
-  </ion-content>
+  </div>
 </ion-content>

@@ -7,15 +7,22 @@
 <ion-content padding *ngIf="!id">
   <div class="qualitiesContainer">
     <ion-card *ngFor="let quality of qualities" (click)="changeMenu(quality.code)" class="qualitiesCard">
-      <img class="qualitiesImage" [src]="quality.image" alt="">
-      <ion-card-title>{{quality.name}}</ion-card-title>
+      <img class="qualitiesTagImage" [src]="quality.image" alt="">
+      <div class="qualitiesTagName">{{quality.name}}</div>
     </ion-card>
   </div>
 </ion-content>
 
 <ion-content *ngIf="id">
-  <ion-card *ngFor="let quality of qualityArray">
-    <ion-card-title>{{quality.name}}</ion-card-title>
-    <button (click)="showDetails(quality.id)">View Details</button>
-  </ion-card>
+  <div class="qualitiesListContainer">
+    <ion-card *ngFor="let quality of qualityArray" class="qualitiesListCard">
+      <img [src]="quality.image_link !== '' ? quality.image_link : '../../../assets/placeholder.jpg'" alt="API Image Not Available" class="qualitiesImage">
+      <div class="qualitiesTitle">{{quality.name}}</div>
+      <div class="qualitiesInfo">{{quality.brand !== null ? quality.brand : 'maybelline'}} | ${{(quality.price === '0.0' || quality.price === null) ? '5.0' : quality.price}}0</div>
+      <div class="buttonContainer">
+        <ion-button class="qualitiesButton" (click)="showDetails(item.id)">View Details</ion-button>
+        <ion-button class="qualitiesButton">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
+      </div>
+    </ion-card>
+  </div>
 </ion-content>
