@@ -20,8 +20,8 @@
       <div class="qualitiesTitle">{{quality.name}}</div>
       <div class="qualitiesInfo">{{quality.brand !== null ? quality.brand : 'maybelline'}} | ${{(quality.price === '0.0' || quality.price === null) ? '5.0' : quality.price}}0</div>
       <div class="buttonContainer">
-        <ion-button class="qualitiesButton" (click)="showDetails(item.id)">View Details</ion-button>
-        <ion-button class="qualitiesButton">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
+        <ion-button class="qualitiesButton" (click)="showDetails(quality.id)">View Details</ion-button>
+        <ion-button class="qualitiesButton" (click)="loginService.currentUser ? firebaseService.addToCart(quality.id) : routeToLogin()">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
       </div>
     </ion-card>
   </div>

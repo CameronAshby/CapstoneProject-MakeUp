@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ApiService} from '../../service/api/api.service';
 import {Observable} from 'rxjs';
 import {LoginService} from '../../service/login/login.service';
+import {FirebaseService} from '../../service/firebase/firebase.service';
 
 @Component({
   selector: 'app-product-page',
@@ -13,7 +14,7 @@ export class ProductPagePage implements OnInit {
   productId: string;
   results$: Observable<any>;
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, public loginService: LoginService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, public loginService: LoginService, public firebaseService:FirebaseService) { }
 
   ngOnInit() {
     this.productId = this.route.snapshot.paramMap.get('productId');
@@ -21,6 +22,10 @@ export class ProductPagePage implements OnInit {
     if(this.productId) {
       this.results$ = this.api.getById(this.productId);
     }
+  }
+
+  routeToLogin() {
+    this.router.navigate(['/welcome-page']);
   }
 
 }

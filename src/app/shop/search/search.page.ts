@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {LoadingController} from '@ionic/angular';
 import {Product} from '../../model/product';
 import {LoginService} from '../../service/login/login.service';
+import {FirebaseService} from '../../service/firebase/firebase.service';
 
 @Component({
   selector: 'app-search',
@@ -17,7 +18,7 @@ export class SearchPage implements OnInit {
 
   productList: Product[] = [];
 
-  constructor(public api: ApiService, private router: Router, private loader: LoadingController, public loginService: LoginService) {
+  constructor(public api: ApiService, private router: Router, private loader: LoadingController, public loginService: LoginService, public firebaseService:FirebaseService) {
     this.product$ = this.api.initializeAPI();
   }
 
@@ -29,6 +30,10 @@ export class SearchPage implements OnInit {
 
   showDetails(id: string) {
     this.router.navigate(['shop','product-page',id]);
+  }
+
+  routeToLogin() {
+    this.router.navigate(['/welcome-page']);
   }
 
   async getApiArray() {

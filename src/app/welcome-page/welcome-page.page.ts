@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../service/login/login.service';
-import {forEach} from "@firebase/util";
-import {User} from "../model/User";
+import {FirebaseService} from '../service/firebase/firebase.service';
 
 @Component({
   selector: 'app-welcome-page',
@@ -15,19 +14,11 @@ export class WelcomePagePage implements OnInit {
   isNewUser: boolean = false;
   fbUserArray;
 
-  constructor(public loginService: LoginService) {
+  constructor(public loginService: LoginService, public firebaseService: FirebaseService) {
 
   }
 
   ngOnInit() {
-  }
-
-  setEmail(email) {
-    this.email = email;
-  }
-
-  updateName(name) {
-    this.name = name;
   }
 
   setUserName(name) {
@@ -38,23 +29,6 @@ export class WelcomePagePage implements OnInit {
     this.isNewUser = true;
   }
 
-  saveNewUser(name, email, password) {
-    this.loginService.getUsersObservable().subscribe(users => {
-      this.fbUserArray = users;
-
-    this.fbUserArray.forEach( user =>{
-      if (user.email === email){
-        console.log("That email is already being used");
-        return;
-        }
-      });
-    this.loginService.userName = name;
-      this.loginService.newUser(email, password);
-      console.log("New user signed in with email is " + this.loginService.userName);
-
-    this.isNewUser = false;
-    });
-  }
   cancel(){
     this.isNewUser = false;
     this.email = '';

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../service/firebase/firebase.service';
 import {LoginService} from '../service/login/login.service';
 import {Router} from '@angular/router';
+import {ApiService} from '../service/api/api.service';
 import {Product} from '../model/product';
 
 @Component({
@@ -11,17 +12,19 @@ import {Product} from '../model/product';
 })
 export class CartPage implements OnInit {
 
+    productArray: Product[] = [];
 
-  constructor(private firebaseService: FirebaseService, public loginService: LoginService, private router: Router) {
+  constructor(public firebaseService: FirebaseService, public loginService: LoginService, private router: Router, public apiService: ApiService) {}
+
+  ionViewDidEnter() {
       if(this.loginService.currentUser) {
-          this.firebaseService.getCartItems()
+          this.firebaseService.getCartItems();
+      }
+      else {
+          this.router.navigate(['/welcome-page']);
       }
   }
 
   ngOnInit() {
-      this.getCartArray();
-  }
-  getCartArray() {
-      console.log(this.firebaseService.cartArray);
   }
 }

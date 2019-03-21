@@ -23,7 +23,7 @@
         <ion-chip *ngFor="let color of product.product_colors" [style.background]="color.hex_value"><ion-label>{{color.colour_name}}</ion-label></ion-chip>
       </div>
       <div class="buttonContainer">
-        <ion-button class="productButton">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
+        <ion-button class="productButton" (click)="loginService.currentUser ? firebaseService.addToCart(product.id) : routeToLogin()">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
       </div>
     </ion-card>
   </div>
