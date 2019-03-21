@@ -11,8 +11,8 @@
   <div class="loggedIn">
     <h1> {{ loginService.currentUser.name }}  's Shopping Cart</h1>
     <ion-card id="cartCard">
-      <ion-card *ngFor="let item of firebaseService.cartArray">
-        {{item}}
+      <ion-card *ngFor="let item of firebaseService.productCart">
+        {{item.name}}
       </ion-card>
     </ion-card>
   </div>
