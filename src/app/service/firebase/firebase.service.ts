@@ -1,15 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
-  AngularFirestoreDocument,
   AngularFirestore,
   AngularFirestoreCollection,
-  DocumentChangeAction
 } from 'angularfire2/firestore';
 import {LoginService} from '../login/login.service';
 import {User} from '../../model/User';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {ApiService} from '../api/api.service';
 import {Product} from '../../model/product';
 
 @Injectable({
@@ -27,11 +22,11 @@ export class FirebaseService {
 
   getCartItems() {
     this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).ref.onSnapshot(doc => {
-       console.log(this.loginService.currentUser = doc.data() as User);
        this.cartArray = (doc.data() as User).cart;
     });
   }
   addToCart(item){
+    this.getCartItems();
     this.cartArray.push(item);
     this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).set({
       cart: this.cartArray,
