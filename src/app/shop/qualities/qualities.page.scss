@@ -1,5 +1,13 @@
 * {
   color: #442C2E;
+  font-family: 'Cinzel', serif;
+}
+
+.qualitiesListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 10px;
 }
 
 .qualitiesContainer {
@@ -11,6 +19,73 @@
 
 .qualitiesCard {
   width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.qualitiesTagImage {
+  width: 50px;
+  height: 50px;
+  margin: 20px 10px 10px 10px;
+  border: 2px solid #DCDCDC;
+  border-radius: 15px;
+}
+
+.qualitiesTagName {
+  font-size: 20px;
+}
+
+.qualitiesTagName:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.qualitiesImage {
+  width: 215px;
+  height: 150px;
+  margin: 20px 10px 10px 10px;
+  border: 2px solid #DCDCDC;
+}
+
+.qualitiesName {
+  margin: 10px 10px 20px 10px;
+  color: #442C2E;
+  background: #FEDBD0;
+}
+
+.qualitiesTitle {
+  margin: 10px 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.qualitiesInfo {
+  margin: 10px 0;
+}
+
+.buttonContainer {
+  width: 80%;
+  margin: 10px 10px 20px 10px;
+}
+
+.qualitiesButton {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.qualitiesName {
+  margin: 10px 10px 20px 10px;
+  color: #442C2E;
+}
+
+.qualitiesListCard {
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;

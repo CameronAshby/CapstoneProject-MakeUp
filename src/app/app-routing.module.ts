@@ -43,8 +43,6 @@ const routes: Routes = [
   { path: 'product-page/:id', loadChildren: './shop/product-page/product-page.module#ProductPagePageModule' },
 ];
 
-// path: 'something/:id'
-
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     paramsInheritanceStrategy: 'always'

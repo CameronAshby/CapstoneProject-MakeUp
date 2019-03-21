@@ -1,6 +1,6 @@
 * {
   color: #442C2E;
-
+  font-family: 'Cinzel', serif;
 }
 
 .brandListCard {
@@ -22,6 +22,36 @@
   height: 150px;
   margin: 20px 10px 10px 10px;
   border: 2px solid #DCDCDC;
+}
+
+.brandName {
+  margin: 10px 10px 20px 10px;
+  color: #442C2E;
+  background: #FEDBD0;
+}
+
+.brandTitle {
+  margin: 10px 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.brandInfo {
+  margin: 10px 0;
+}
+
+.buttonContainer {
+  width: 80%;
+  margin: 10px 10px 20px 10px;
+}
+
+.brandButton {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .brandName {

@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
 import {
-  AngularFirestoreDocument,
   AngularFirestore,
   AngularFirestoreCollection,
-  DocumentChangeAction
 } from 'angularfire2/firestore';
 import {LoginService} from '../login/login.service';
 import {User} from '../../model/User';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {ApiService} from '../api/api.service';
 import {Product} from '../../model/product';
+import {ApiService} from '../api/api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +14,23 @@ import {Product} from '../../model/product';
 export class FirebaseService {
 
   cartArray: Product[] = [];
+  productCart: Product[] = [];
 
   private cartRef: AngularFirestoreCollection<User>;
 
-  constructor(private afs: AngularFirestore, private loginService: LoginService) {
+  constructor(private afs: AngularFirestore, private loginService: LoginService, public apiService:ApiService) {
     this.cartRef = this.afs.collection<User>(`users`);
   }
 
   getCartItems() {
+    this.productCart = [];
     this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).ref.onSnapshot(doc => {
-       console.log(this.loginService.currentUser = doc.data() as User);
        this.cartArray = (doc.data() as User).cart;
+       this.cartArray.forEach(item => {
+         this.apiService.getById(item).subscribe(product => {
+           this.productCart.push(product as Product);
+         })
+       });
     });
   }
   addToCart(item){

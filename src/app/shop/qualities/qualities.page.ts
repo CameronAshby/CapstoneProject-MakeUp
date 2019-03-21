@@ -3,6 +3,8 @@ import {Observable} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ApiService} from '../../service/api/api.service';
 import {LoadingController} from '@ionic/angular';
+import {LoginService} from '../../service/login/login.service';
+import {FirebaseService} from '../../service/firebase/firebase.service';
 
 @Component({
   selector: 'app-qualities',
@@ -39,7 +41,7 @@ export class QualitiesPage implements OnInit {
 
   qualityArray = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private loader: LoadingController) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private loader: LoadingController, public loginService: LoginService, public firebaseService:FirebaseService) { }
 
   ngOnInit() {
     if(this.api.apiArray.length === 0) {
@@ -58,6 +60,10 @@ export class QualitiesPage implements OnInit {
 
   showDetails(id: string) {
     this.router.navigate(['shop','product-page',id]);
+  }
+
+  routeToLogin() {
+    this.router.navigate(['/welcome-page']);
   }
 
   async getApiArray() {

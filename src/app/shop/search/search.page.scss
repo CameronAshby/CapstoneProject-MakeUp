@@ -1,4 +1,60 @@
 * {
   color: #442C2E;
-  --background: #FEEAE6;
+  font-family: 'Cinzel', serif;
+}
+.searchListCard {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.searchImage {
+  width: 215px;
+  height: 150px;
+  margin: 20px 10px 10px 10px;
+  border: 2px solid #DCDCDC;
+}
+
+.searchName {
+  margin: 10px 10px 20px 10px;
+  color: #442C2E;
+  background: #FEDBD0;
+}
+
+.searchTitle {
+  margin: 10px 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.searchInfo {
+  margin: 10px 0;
+}
+
+.buttonContainer {
+  width: 80%;
+  margin: 10px 10px 20px 10px;
+}
+
+.searchButton {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.searchName {
+  margin: 10px 10px 20px 10px;
+  color: #442C2E;
+  background: #FEDBD0;
 }

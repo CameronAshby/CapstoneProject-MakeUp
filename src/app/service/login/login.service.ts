@@ -42,22 +42,9 @@ export class LoginService implements OnInit {
                     email: data.user.email,
                     cart: [],
                 };
-                this.getUsersObservable().subscribe( data => {
-                    this.userArray = data;
-                    this.userArray.forEach( user =>{
-                        if(user.email !== this.currentUser.email){
-                           return;
-                        }
-
-                    });
-                });
-                this.isLoggedIn = true;
-                console.log("logged in = " + this.isLoggedIn);
             }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
-
-
         })
     }
 
@@ -80,20 +67,21 @@ export class LoginService implements OnInit {
     }
 
     emailSignIn(email, password){
+        let userName = '';
+        this.usersRef.doc<User>(email).ref.onSnapshot(doc => {
+            userName = doc.data().name;
+        });
         this.afAuth.auth.signInWithEmailAndPassword(email, password)
             .then(data => {
             this.currentUser = {
-                name: data.user.displayName,
+                name: userName,
                 email: data.user.email,
                 cart: [],
             };
-                this.isLoggedIn = true;
-                console.log("logged in = " + this.isLoggedIn);
         }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
         });
-        console.log('email sign in');
     }
 
     logout() {

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ApiService} from '../../service/api/api.service';
+import {Product} from '../../model/product';
+import {LoginService} from '../../service/login/login.service';
+import {FirebaseService} from '../../service/firebase/firebase.service';
 
 @Component({
   selector: 'app-brand',
@@ -70,12 +73,14 @@ export class BrandPage implements OnInit {
     {name: 'Zorah Biocosmetiques', code: 'zorah biocosmetiques', image: '../../../assets/brandImages/zorahBio.png'}
   ];
 
+  brandArray: Product[] = [];
+
   id: string;
   results$: Observable<any>;
 
   product = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, public loginService: LoginService, public firebaseService:FirebaseService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -90,6 +95,10 @@ export class BrandPage implements OnInit {
 
   showDetails(id: string) {
     this.router.navigate(['shop','product-page',id]);
+  }
+
+  routeToLogin() {
+    this.router.navigate(['/welcome-page']);
   }
 
 }

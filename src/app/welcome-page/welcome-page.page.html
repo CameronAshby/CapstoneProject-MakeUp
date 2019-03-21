@@ -7,9 +7,10 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content id="welcomeContent" padding *ngIf="!loginService.currentUser">
+<ion-content padding *ngIf="!loginService.currentUser">
 
-        <ion-card *ngIf="isNewUser" class="signInCard">
+    <div *ngIf="isNewUser" class="welcomeContent">
+        <ion-card class="signInCard">
             <ion-card-header> New User </ion-card-header>
             <ion-card-content>
                 <input type="text" [(ngModel)]="name" placeholder="Name" id="newName">
@@ -19,9 +20,10 @@
                 <ion-button (click)="cancel()">Cancel</ion-button>
             </ion-card-content>
         </ion-card>
+    </div>
 
-
-        <ion-card *ngIf="!isNewUser" class="signInCard">
+    <div *ngIf="!isNewUser" class="welcomeContent">
+        <ion-card class="signInCard">
             <ion-card-header>Sign in with email</ion-card-header>
             <input type="email" [(ngModel)]="email" placeholder="email" id="email">
             <input type="password" [(ngModel)]="password" placeholder="password" id="password">
@@ -38,6 +40,7 @@
                 <ion-button (click)="newUser()"> New User </ion-button>
             </div>
         </ion-card>
+    </div>
 </ion-content>
 
 
