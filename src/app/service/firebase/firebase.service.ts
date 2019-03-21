@@ -10,38 +10,33 @@ import {User} from '../../model/User';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ApiService} from '../api/api.service';
+import {Product} from '../../model/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
+  cartArray: Product[] = [];
+
   private cartRef: AngularFirestoreCollection<User>;
 
-  constructor(private afs: AngularFirestore, private loginService: LoginService, public apiService: ApiService) {
+  constructor(private afs: AngularFirestore, private loginService: LoginService) {
     this.cartRef = this.afs.collection<User>(`users`);
   }
 
   getCartItems() {
     this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).ref.onSnapshot(doc => {
        console.log(this.loginService.currentUser = doc.data() as User);
-       this.apiService.cartArray = (doc.data() as User).cart;
+       this.cartArray = (doc.data() as User).cart;
     });
   }
-  getCartObservable(): Observable<User[]> {
-    return this.cartRef.snapshotChanges()
-        .pipe(
-            map((items: DocumentChangeAction<User>[]): User[] => {
-              return items.map((item: DocumentChangeAction<User>): User => {
-                return {
-                  name: item.payload.doc.data().name,
-                  email: item.payload.doc.data().email,
-                  cart: item.payload.doc.data().cart,
-                  password: item.payload.doc.data().password,
-                } as User;
-              });
-            })
-        );
-
+  addToCart(item){
+    this.cartArray.push(item);
+    this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).set({
+      cart: this.cartArray,
+      email: this.loginService.currentUser.email,
+      name: this.loginService.currentUser.name,
+    })
   }
 }

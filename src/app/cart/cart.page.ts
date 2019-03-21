@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../service/firebase/firebase.service';
 import {LoginService} from '../service/login/login.service';
-import {ApiService} from '../service/api/api.service';
 import {Router} from '@angular/router';
+import {Product} from '../model/product';
 
 @Component({
   selector: 'app-cart',
@@ -11,16 +11,17 @@ import {Router} from '@angular/router';
 })
 export class CartPage implements OnInit {
 
-  constructor(private firebaseService: FirebaseService, public apiService: ApiService, public loginService: LoginService, private router: Router) {
+
+  constructor(private firebaseService: FirebaseService, public loginService: LoginService, private router: Router) {
       if(this.loginService.currentUser) {
           this.firebaseService.getCartItems()
       }
   }
 
   ngOnInit() {
-      console.log(this.loginService.currentUser);
+      this.getCartArray();
   }
   getCartArray() {
-      console.log(this.apiService.cartArray);
+      console.log(this.firebaseService.cartArray);
   }
 }

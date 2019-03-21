@@ -20,6 +20,7 @@ export class LoginService implements OnInit {
     currentUser: User;
     userName: string;
     userArray: User[];
+    isLoggedIn: boolean = false;
 
     private userRef: AngularFirestoreDocument<User>;
     private usersRef: AngularFirestoreCollection<User>;
@@ -49,8 +50,9 @@ export class LoginService implements OnInit {
                         }
 
                     });
-                })
-
+                });
+                this.isLoggedIn = true;
+                console.log("logged in = " + this.isLoggedIn);
             }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
@@ -69,6 +71,8 @@ export class LoginService implements OnInit {
                     password: password
                 };
                 this.saveUser(this.currentUser);
+                this.isLoggedIn = true;
+                console.log("logged in = " + this.isLoggedIn);
             }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
@@ -83,6 +87,8 @@ export class LoginService implements OnInit {
                 email: data.user.email,
                 cart: [],
             };
+                this.isLoggedIn = true;
+                console.log("logged in = " + this.isLoggedIn);
         }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
