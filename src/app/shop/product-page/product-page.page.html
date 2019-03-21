@@ -9,7 +9,7 @@
     <ion-card class="productListCard">
       <div id="productHeader">
         <div id="productImage">
-          <img [src]="product.image_link !== '' ? product.image_link : '../../../assets/placeholder.jpg'" alt="API Image Not Available" class="productImage">
+          <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="product.image_link" alt="API Image Not Available" class="productImage">
         </div>
         <div id="headerContent">
           <div class="productTitle">{{product.name}}</div>

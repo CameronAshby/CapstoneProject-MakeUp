@@ -16,7 +16,7 @@
 <ion-content *ngIf="id">
   <div *ngIf="results$ | async as productArray" class="productListContainer">
     <ion-card *ngFor="let item of productArray" class="productListCard">
-      <img [src]="item.image_link !== '' ? item.image_link : '../../../assets/placeholder.jpg'" alt="API Image Not Available" class="productImage">
+      <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="item.image_link" alt="API Image Not Available" class="productImage">
       <div class="productTitle">{{item.name}}</div>
       <div class="productInfo">{{item.brand !== null ? item.brand : 'maybelline'}} | ${{(item.price === '0.0' || item.price === null) ? '5.0' : item.price}}0</div>
       <div class="buttonContainer">

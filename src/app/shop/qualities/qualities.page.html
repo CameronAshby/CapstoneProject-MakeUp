@@ -16,7 +16,7 @@
 <ion-content *ngIf="id">
   <div class="qualitiesListContainer">
     <ion-card *ngFor="let quality of qualityArray" class="qualitiesListCard">
-      <img [src]="quality.image_link !== '' ? quality.image_link : '../../../assets/placeholder.jpg'" alt="API Image Not Available" class="qualitiesImage">
+      <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="quality.image_link" alt="API Image Not Available" class="qualitiesImage">
       <div class="qualitiesTitle">{{quality.name}}</div>
       <div class="qualitiesInfo">{{quality.brand !== null ? quality.brand : 'maybelline'}} | ${{(quality.price === '0.0' || quality.price === null) ? '5.0' : quality.price}}0</div>
       <div class="buttonContainer">
