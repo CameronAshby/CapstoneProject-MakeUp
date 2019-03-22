@@ -23,22 +23,31 @@
     </div>
 
     <div *ngIf="!isNewUser" class="welcomeContent">
-        <ion-card class="signInCard">
-            <ion-card-header>Sign in with email</ion-card-header>
-            <input type="email" [(ngModel)]="email" placeholder="email" id="email">
-            <input type="password" [(ngModel)]="password" placeholder="password" id="password">
-            <ion-button id="emailSignInbtn" (click)="loginService.emailSignIn(email, password); setUserName(name)">Log In</ion-button>
-            <div id="orDiv">Or</div>
-
-            <div>
-                <img id="signin_button" (click)="loginService.googleSignIn()"
-                     src="../../assets/btn_google_signin_dark_focus_web@2x.png" alt="">
-            </div>
+        <ion-card class="backgroundCard">
 
 
-            <div>
-                <ion-button (click)="newUser()"> New User </ion-button>
-            </div>
+            <ion-card class="signInCard">
+                        <ion-card-header>Sign in with email</ion-card-header>
+                        <input type="email" [(ngModel)]="email" placeholder="email" id="email">
+                        <input type="password" [(ngModel)]="password" placeholder="password" id="password">
+                        <ion-button id="emailSignInbtn" (click)="loginService.emailSignIn(email, password); setUserName(name)">Log In</ion-button>
+                        <div>
+                            <img id="signin_button" (click)="loginService.googleSignIn()" src="../../assets/btn_google_signin_dark_focus_web@2x.png" alt="">
+                        </div>
+            </ion-card>
+
+
+            <ion-card class="signInCard">
+                <div class="logo">
+                    <img src="../../assets/logoImages/camlogo.png">
+                </div>
+                <div class="logo_btn">
+                    <ion-button (click)="newUser()"> New User </ion-button>
+                </div>
+            </ion-card>
+
+
+
         </ion-card>
     </div>
 </ion-content>
