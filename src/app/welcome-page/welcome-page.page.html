@@ -11,7 +11,7 @@
 
     <div *ngIf="isNewUser" class="welcomeContent">
         <ion-card class="signInCard">
-            <ion-card-header> New User </ion-card-header>
+            <ion-card-header> New User</ion-card-header>
             <ion-card-content>
                 <input type="text" [(ngModel)]="name" placeholder="Name" id="newName">
                 <input type="email" [(ngModel)]="email" placeholder="email" id="newEmail">
@@ -27,27 +27,29 @@
 
 
             <ion-card class="signInCard">
-                        <ion-card-header>Sign in with email</ion-card-header>
-                        <input type="email" [(ngModel)]="email" placeholder="email" id="email">
-                        <input type="password" [(ngModel)]="password" placeholder="password" id="password">
-                        <ion-button id="emailSignInbtn" (click)="loginService.emailSignIn(email, password); setUserName(name)">Log In</ion-button>
-                        <div>
-                            <img id="signin_button" (click)="loginService.googleSignIn()" src="../../assets/btn_google_signin_dark_focus_web@2x.png" alt="">
-                        </div>
+                <ion-card-header>Sign in with email</ion-card-header>
+                <input type="email" [(ngModel)]="email" placeholder="email" id="email">
+                <input type="password" [(ngModel)]="password" placeholder="password" id="password">
+                <ion-button id="emailSignInbtn" (click)="loginService.emailSignIn(email, password); setUserName(name)">
+                    Log In
+                </ion-button>
+                <div>
+                    <img id="signin_button" (click)="loginService.googleSignIn()"
+                         src="../../assets/btn_google_signin_dark_focus_web@2x.png" alt="">
+                </div>
             </ion-card>
 
 
             <ion-card class="signInCard">
                 <div class="logo">
                     <img src="../../assets/logoImages/camlogo.png">
+
                 </div>
                 <div class="logo_btn">
-                    <ion-button (click)="newUser()"> New User </ion-button>
+                     <span>Not a member yet?</span>
+                    <ion-button class="newUser_btn" (click)="newUser()"> Sign Up Now</ion-button>
                 </div>
             </ion-card>
-
-
-
         </ion-card>
     </div>
 </ion-content>
@@ -61,15 +63,10 @@
 
     <div class="landingContent">
         <div class="pictures">
-           <div class="imgage1"></div>
+            <div class="imgage1"></div>
             <div class="imgage2"></div>
             <div class="imgage3"></div>
             <div class="imgage4"></div>
-            <!--<div class="imgage1"><img src="../../assets/unslpash/assorted%20makeup.jpeg"></div>-->
-            <!--<div class="imgage2"><img src="../../assets/unslpash/makeUpBag.jpeg"></div>-->
-            <!--<div class="imgage3"> <img src="../../assets/unslpash/powder%20eyeshadow.jpeg"></div>-->
-            <!--<div class="imgage4"><img src="../../assets/unslpash/eyeshadow%20pallette.jpeg"></div>-->
-
         </div>
     </div>
     <footer>
