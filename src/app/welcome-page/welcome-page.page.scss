@@ -28,6 +28,40 @@ ion-title {
 }
 
 .inputContainer {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUpInputContainer  {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUpButtons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUpBtn {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.cancelButton {
+  margin-bottom: 20px;
+}
+
+.signUpCard {
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,6 +69,7 @@ ion-title {
 }
 
 input{
+  width: 100%;
   padding: 10px;
   margin: 10px 0;
 }
@@ -113,7 +148,8 @@ input{
 }
 
 .flair {
-  width: 50%;
+  width: 200px;
+  height: 50px;
 }
 
 #heroImageContainer {

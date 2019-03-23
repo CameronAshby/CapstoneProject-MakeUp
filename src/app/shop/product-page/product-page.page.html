@@ -28,6 +28,12 @@
     </ion-card>
   </div>
 
+  <div class="flairContainer">
+    <img class="flair" src="../../../assets/newflair.png" alt="">
+    <img class="flair" src="../../../assets/newflair.png" alt="">
+    <img class="flair" src="../../../assets/newflair.png" alt="">
+  </div>
+
   <div id="extraContainer">
     <ion-card class="similarContainer" *ngIf="similarProducts$ | async as similarProducts">
       <div class="similarCardContainer" *ngFor="let simProduct of similarProducts, let i = index">
