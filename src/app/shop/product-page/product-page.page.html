@@ -29,8 +29,13 @@
   </div>
 
   <div id="extraContainer">
-    <ion-card>
-      See More Like This
+    <ion-card class="similarContainer" *ngIf="similarProducts$ | async as similarProducts">
+      <div class="similarCardContainer" *ngFor="let simProduct of similarProducts, let i = index">
+        <div class="similarCard" *ngIf="i < 10" (click)="showDetails(simProduct.id)">
+          <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="simProduct.image_link" alt="API Image Not Available" class="similarImage">
+          <div>{{simProduct.name}}</div>
+        </div>
+      </div>
     </ion-card>
   </div>
 </ion-content>
