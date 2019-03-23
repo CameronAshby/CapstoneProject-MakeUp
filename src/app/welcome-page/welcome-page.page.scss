@@ -11,27 +11,15 @@ ion-title {
   text-align: center;
 }
 
-.oasisLogo {
-  height: 25px;
-  width: 25px;
-}
-
-image {
-  width: 50px;
-  height: 50px;
+#emailSignInbtn {
+  margin-top: 10px;
 }
 
 #signin_button {
   width: 200px;
-  display: block;
-  margin: auto;
+  margin-bottom: 20px;
+  display: flex;
   cursor: pointer;
-}
-
-#singin_logo {
-  width: 150px;
-  display: block;
-  margin: 50px auto;
 }
 
 #content {
@@ -39,27 +27,80 @@ image {
   height: 100%;
 }
 
-input{
-  padding: 10px;
-  margin: auto auto 10px auto;
+.inputContainer {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-#orDiv{
-  margin: auto;
+
+.signUpInputContainer  {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUpButtons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUpBtn {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.cancelButton {
+  margin-bottom: 20px;
+}
+
+.signUpCard {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
 }
 
 .signInCard{
-  width: 100%;
-  height: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
   background-color: white;
 }
+
+#googleLoginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.or {
+  margin-bottom: 20px;
+}
+
+#newSignIn {
+  justify-content: space-evenly;
+  border-left: 2px solid #442C2E;
+}
+
 #emailSignInbtn{
   width: 50%;
-  margin: auto;
+  margin-bottom: 20px;
 }
 .welcomeContent{
   width: 100%;
@@ -67,50 +108,74 @@ input{
   display: flex;
   justify-content: center;
   align-items: center;
-
-}
-ion-card-header{
-  margin: auto;
 }
 
 .backgroundCard {
-  width: 75%;
-  height: 75%;
+  width: 60%;
   display: flex;
-  flex-direction: row;
-  background-color: #FEEAE6;
-  margin: auto;
-  padding: 20px 20px 20px 20px;
-}
-.signInCard{
-  width: 75%;
-  height: 75%;
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  //justify-content: center;
-  background-color: white;
-  margin: 20px;
-  padding: 10px;
+  padding: 20px;
+  background-image: url("../../assets/unslpash/powderEyeshadow.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
 .logo{
-  width: 50%;
-  height:50%;
+  width: 150px;
+  height: 150px;
 }
+
+#notMember {
+  margin-bottom: 20px;
+}
+
 .logo_btn{
-  width: 50%;
-  height: 50%;
+  width: 75%;
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
 }
-span{
-  margin: auto;
-}
+
 .newUser_btn{
-  margin: 10px auto 0 auto;
+  margin-bottom: 20px;
 }
+
+.flairContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flair {
+  width: 200px;
+  height: 50px;
+}
+
+#heroImageContainer {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#heroImage {
+  width: 100%;
+}
+
+#heroLoginContainer {
+  z-index: 1;
+  width: 90%;
+  position: relative;
+  height: auto;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 //Landing Page
 
 h1{

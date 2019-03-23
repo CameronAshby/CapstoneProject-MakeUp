@@ -4,7 +4,7 @@ export interface Product {
     price: string;
     tag_list: [];
     image_link: string;
-    productType: string;
+    product_type: string;
     description: string;
     id: number;
     apiUrl: string;
