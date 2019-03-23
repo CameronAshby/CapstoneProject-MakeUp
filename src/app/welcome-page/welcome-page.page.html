@@ -23,37 +23,39 @@
     </div>
 
     <div *ngIf="!isNewUser" class="welcomeContent">
-        <ion-card class="backgroundCard">
-
-
-            <ion-card class="signInCard">
-                <ion-card-header>Sign in with email</ion-card-header>
-                <input type="email" [(ngModel)]="email" placeholder="email" id="email">
-                <input type="password" [(ngModel)]="password" placeholder="password" id="password">
-                <ion-button id="emailSignInbtn" (click)="loginService.emailSignIn(email, password); setUserName(name)">
-                    Log In
-                </ion-button>
-                <div>
-                    <img id="signin_button" (click)="loginService.googleSignIn()"
-                         src="../../assets/btn_google_signin_dark_focus_web@2x.png" alt="">
+        <div class="backgroundCard">
+            <ion-card id="heroLoginContainer">
+                <div class="signInCard">
+                    <ion-card-header>Member Sign In</ion-card-header>
+                    <div class="inputContainer">
+                        <input type="email" [(ngModel)]="email" placeholder="email" id="email">
+                        <input type="password" [(ngModel)]="password" placeholder="password" id="password">
+                    </div>
+                    <ion-button id="emailSignInbtn" (click)="loginService.emailSignIn(email, password); setUserName(name)">Log In</ion-button>
+                    <div class="or">Or</div>
+                    <div id="googleLoginContainer">
+                        <img
+                            id="signin_button" (click)="loginService.googleSignIn()"
+                            src="../../assets/btn_google_signin_dark_focus_web@2x.png" alt=""
+                        >
+                    </div>
+                </div>
+                <div class="signInCard" id="newSignIn">
+                    <div class="logo">
+                        <img src="../../assets/logoImages/camlogo.png" alt="">
+                    </div>
+                    <div class="flairContainer">
+                        <img class="flair" src="../../assets/newflair.png" alt="">
+                    </div>
+                    <div class="logo_btn">
+                        <span id="notMember">Not a member?</span>
+                        <ion-button class="newUser_btn" (click)="newUser()"> Sign Up</ion-button>
+                    </div>
                 </div>
             </ion-card>
-
-
-            <ion-card class="signInCard">
-                <div class="logo">
-                    <img src="../../assets/logoImages/camlogo.png">
-
-                </div>
-                <div class="logo_btn">
-                     <span>Not a member yet?</span>
-                    <ion-button class="newUser_btn" (click)="newUser()"> Sign Up Now</ion-button>
-                </div>
-            </ion-card>
-        </ion-card>
+        </div>
     </div>
 </ion-content>
-
 
 <ion-content *ngIf="loginService.currentUser">
     <div>Hi {{loginService.currentUser.name}}!</div>
@@ -69,7 +71,4 @@
             <div class="imgage4"></div>
         </div>
     </div>
-    <footer>
-
-    </footer>
 </ion-content>
