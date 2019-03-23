@@ -18,7 +18,7 @@ export class CartPage implements OnInit {
 
   ionViewDidEnter() {
       if(this.loginService.currentUser) {
-          this.firebaseService.getCartItems();
+          // this.firebaseService.getCartItems();
       }
       else {
           this.router.navigate(['/welcome-page']);
