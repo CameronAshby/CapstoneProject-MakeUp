@@ -10,18 +10,23 @@
 <ion-content padding *ngIf="!loginService.currentUser">
 
     <div *ngIf="isNewUser" class="welcomeContent">
-        <ion-card class="signUpCard">
-            <ion-card-header> New User</ion-card-header>
-            <div class="signUpInputContainer">
-                <input type="text" [(ngModel)]="name" placeholder="Name" id="newName">
-                <input type="email" [(ngModel)]="email" placeholder="email" id="newEmail">
-                <input type="password" [(ngModel)]="password" placeholder="password" id="newPassword">
-                <div class="signUpButtons">
-                    <ion-button class="signUpBtn" (click)="loginService.newUser(email, password); setUserName(name)">Register</ion-button>
-                    <ion-button class="signUpBtn cancelButton" (click)="cancel()">Cancel</ion-button>
+        <div class="backgroundCard">
+            <ion-card class="signUpCard">
+                <ion-card-header> New User</ion-card-header>
+                <div class="flairContainer">
+                    <img class="flair" src="../../assets/newflair.png" alt="">
                 </div>
-            </div>
-        </ion-card>
+                <div class="signUpInputContainer">
+                    <input type="text" [(ngModel)]="name" placeholder="Name" id="newName">
+                    <input type="email" [(ngModel)]="email" placeholder="email" id="newEmail">
+                    <input type="password" [(ngModel)]="password" placeholder="password" id="newPassword">
+                    <div class="signUpButtons">
+                        <ion-button class="signUpBtn" (click)="loginService.newUser(email, password); setUserName(name)">Register</ion-button>
+                        <ion-button class="signUpBtn cancelButton" (click)="cancel()">Cancel</ion-button>
+                    </div>
+                </div>
+            </ion-card>
+        </div>
     </div>
 
     <div *ngIf="!isNewUser" class="welcomeContent">
