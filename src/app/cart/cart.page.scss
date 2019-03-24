@@ -10,3 +10,31 @@ ion-toolbar {
 ion-title {
   text-align: center;
 }
+
+.cartImage {
+  width: 215px;
+  height: 150px;
+  margin: 20px 10px 10px 10px;
+  border: 2px solid #DCDCDC;
+}
+
+.cartTitle {
+  margin: 10px 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  width: 100%;
+}
+
+h3 {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#container {
+  width: 100%;
+}
+
+ion-col {
+  text-align: center;
+}
