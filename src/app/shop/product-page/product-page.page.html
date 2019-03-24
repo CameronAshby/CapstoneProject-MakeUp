@@ -13,7 +13,7 @@
         </div>
         <div id="headerContent">
           <div class="productTitle">{{product.name}}</div>
-          <div class="productInfo">{{product.brand !== null ? product.brand : 'maybelline'}} | ${{(product.price === '0.0' || product.price === null) ? '5.0' : product.price}}0</div>
+          <div class="productInfo">{{product.brand !== null ? product.brand : 'maybelline'}} | ${{(item.price === '0.0' || item.price === null) ? '5.00' : item.price + (item.price.split('.')[1].length > 1? '': '0')}}</div>
         </div>
       </div>
       <div id="productDescription">

@@ -23,7 +23,7 @@
       <ion-card *ngFor="let product of productList" class="searchListCard">
         <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="product.image_link" alt="API Image Not Available" class="searchImage">
         <div class="searchTitle">{{product.name}}</div>
-        <div class="searchInfo">{{product.brand !== null ? product.brand : 'maybelline'}} | ${{(product.price === '0.0' || product.price === null) ? '5.0' : product.price}}0</div>
+        <div class="searchInfo">{{product.brand !== null ? product.brand : 'maybelline'}} | ${{(item.price === '0.0' || item.price === null) ? '5.00' : item.price + (item.price.split('.')[1].length > 1? '': '0')}}</div>
         <div class="buttonContainer">
           <ion-button class="searchButton" (click)="showDetails(product.id)">View Details</ion-button>
           <ion-button class="searchButton" (click)="loginService.currentUser ? firebaseService.addToCart(product.id) : routeToLogin()">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
