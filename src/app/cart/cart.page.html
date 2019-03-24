@@ -11,19 +11,19 @@
   <ion-row align-items-center class="cartContainer">
     <ion-col offset="1" size="10" id="cartCard">
       <ion-grid><ion-row class="cartHeader"><ion-col size="4"><h3>Product</h3></ion-col><ion-col><h3>Quantity</h3></ion-col><ion-col><h3>Price</h3></ion-col><ion-col><h3>Total</h3></ion-col></ion-row></ion-grid>
-      <ion-grid>
-        <ion-card *ngFor="let item of firebaseService.productCart">
+      <div class="cartProductContainer">
+        <ion-card *ngFor="let item of firebaseService.cartArray; let i = index">
           <ion-row class="cartItem">
             <ion-col size="4">
-              <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="item.image_link" alt="API Image Not Available" class="cartImage">
-              <div class="cartTitle">{{item.name}} | {{item.brand !== null ? item.brand : 'maybelline'}}</div>
+              <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="item.product.image_link" alt="API Image Not Available" class="cartImage">
+              <div class="cartTitle">{{item.product.name}} | {{item.product.brand !== null ? item.product.brand : 'maybelline'}}</div>
             </ion-col>
-            <ion-col class="cartItemSection">Quantity</ion-col>
-            <ion-col class="cartInfo cartItemSection">${{(item.price === '0.0' || item.price === null) ? '5.00' : item.price + (item.price.split('.')[1].length > 1? '': '0')}}</ion-col>
+            <ion-col class="cartItemSection"><input [value]="item.quantity"></ion-col>
+            <ion-col class="cartInfo cartItemSection">${{(item.product.price === '0.0' || item.product.price === null) ? '5.00' : item.product.price + (item.product.price.split('.')[1].length > 1? '': '0')}}</ion-col>
             <ion-col class="cartItemSection">Item Total</ion-col>
           </ion-row>
         </ion-card>
-      </ion-grid>
+      </div>
     </ion-col>
   </ion-row>
 </ion-grid>

@@ -26,7 +26,7 @@
         <div class="searchInfo">{{product.brand !== null ? product.brand : 'maybelline'}} | ${{(product.price === '0.0' || product.price === null) ? '5.00' : product.price + (product.price.split('.')[1].length > 1? '': '0')}}</div>
         <div class="buttonContainer">
           <ion-button class="searchButton" (click)="showDetails(product.id)">View Details</ion-button>
-          <ion-button class="searchButton" (click)="loginService.currentUser ? firebaseService.addToCart(product.id) : routeToLogin()">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
+          <ion-button class="searchButton" (click)="loginService.currentUser ? firebaseService.addToCart(product) : routeToLogin()">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
         </div>
       </ion-card>
     </div>
