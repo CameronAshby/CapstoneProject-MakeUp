@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Welcome to the Oasis</ion-title>
+        <ion-title>Welcome to The Oasis</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -39,7 +39,7 @@
                         <input type="password" [(ngModel)]="password" placeholder="password" id="password">
                     </div>
                     <ion-button id="emailSignInbtn" (click)="loginService.emailSignIn(email, password); setUserName(name)">Log In</ion-button>
-                    <div class="or">Or</div>
+                    <div class="or">- - Or - -</div>
                     <div id="googleLoginContainer">
                         <img
                             id="signin_button" (click)="loginService.googleSignIn()"
