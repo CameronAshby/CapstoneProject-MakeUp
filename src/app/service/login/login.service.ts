@@ -11,6 +11,7 @@ import {
 import {User} from '../../model/User';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {auth} from 'firebase/app';
+import {MenuController} from '@ionic/angular';
 
 @Injectable({
     providedIn: 'root'
