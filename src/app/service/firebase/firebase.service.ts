@@ -13,6 +13,7 @@ import {ApiService} from '../api/api.service';
 })
 export class FirebaseService {
 
+  total: number = 0;
   cartArray = [];
 
   private cartRef: AngularFirestoreCollection<User>;
@@ -24,6 +25,7 @@ export class FirebaseService {
   getFirebaseCart() {
     this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).ref.onSnapshot(doc => {
       this.cartArray = (doc.data() as User).cart;
+      this.itemTotal();
     });
   }
 
@@ -51,6 +53,36 @@ export class FirebaseService {
         quantity: 1
       });
     }
+    this.updateFirebase();
+    this.itemTotal();
+  }
+
+  updateQuantity(item) {
+    if(item.quantity <= 0) {
+      item.quantity = 1;
+    }
+    this.itemTotal();
+    this.updateFirebase();
+  }
+
+  itemTotal() {
+    this.total = 0;
+    this.cartArray.forEach(item => {
+      if(item.product.price === null || item.product.price === '0.0') {
+        this.total += (item.quantity * 5);
+      }
+      else {
+        this.total += (item.product.price * item.quantity)
+      }
+    });
+  }
+
+  removeItem(index) {
+    this.cartArray.splice(index, 1);
+    this.updateFirebase();
+  }
+
+  updateFirebase() {
     this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).set({
       cart: this.cartArray,
       email: this.loginService.currentUser.email,

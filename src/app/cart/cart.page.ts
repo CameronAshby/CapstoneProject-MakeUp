@@ -22,6 +22,10 @@ export class CartPage implements OnInit {
       }
   }
 
+  shopping() {
+      this.router.navigate(['/shop']);
+  }
+
   ngOnInit() {
   }
 }
