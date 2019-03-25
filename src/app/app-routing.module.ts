@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: './welcome-page/welcome-page.module#WelcomePagePageModule'
   },
   {
+    path: 'about',
+    loadChildren: './about/about.module#AboutPageModule'
+  },
+  {
     path: 'home',
     loadChildren: './home/home.module#HomePageModule'
   },
@@ -41,6 +45,7 @@ const routes: Routes = [
   { path: 'search', loadChildren: './shop/search/search.module#SearchPageModule' },
   { path: 'product-page', loadChildren: './shop/product-page/product-page.module#ProductPagePageModule' },
   { path: 'product-page/:id', loadChildren: './shop/product-page/product-page.module#ProductPagePageModule' },
+
 ];
 
 @NgModule({
