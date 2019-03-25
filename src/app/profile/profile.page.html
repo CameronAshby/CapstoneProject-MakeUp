@@ -9,4 +9,14 @@
 
 <ion-content padding>
 
+  <ion-card>
+    <ion-card>{{ loginService.currentUser.name }}</ion-card>
+      <ion-card class="profileContent">
+        <ion-card class="favorites">
+          <ion-card *ngIf="seeFavs" *ngFor="let fav of favorites"></ion-card>
+          <ion-button (click)="toggleFavorites()">See Favorites</ion-button>
+        </ion-card>
+      </ion-card>
+  </ion-card>
+
 </ion-content>

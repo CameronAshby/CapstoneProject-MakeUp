@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../service/login/login.service';
 import {Router} from '@angular/router';
+import {FirebaseService} from "../service/firebase/firebase.service";
+import {Product} from "../model/product";
 
 @Component({
   selector: 'app-profile',
@@ -9,7 +11,10 @@ import {Router} from '@angular/router';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(public loginService: LoginService, private router: Router) { }
+  favorites: Product [];
+  seeFavs: boolean;
+
+  constructor(public loginService: LoginService, private router: Router, public firebaseService: FirebaseService) { }
 
   ngOnInit() {
   }
@@ -20,5 +25,16 @@ export class ProfilePage implements OnInit {
     }
 
   }
+
+  toggleFavorites(){
+    if(this.seeFavs){
+      this.seeFavs = false;
+    }
+    else{
+      this.seeFavs = true;
+    }
+  }
+
+
 
 }
