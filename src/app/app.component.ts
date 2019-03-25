@@ -30,7 +30,12 @@ export class AppComponent {
       title: 'Profile',
       url: '/profile',
       icon: 'person'
-    }
+    },
+    {
+      title: 'About The Oasis',
+      url: '/about',
+      icon: 'flower'
+    },
   ];
 
   constructor(
