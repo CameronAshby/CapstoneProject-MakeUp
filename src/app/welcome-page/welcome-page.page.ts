@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../service/login/login.service';
 import {FirebaseService} from '../service/firebase/firebase.service';
+import {MenuController} from '@ionic/angular';
 
 @Component({
   selector: 'app-welcome-page',
@@ -13,7 +14,7 @@ export class WelcomePagePage implements OnInit {
   password: string;
   isNewUser: boolean = false;
 
-  constructor(public loginService: LoginService, public firebaseService: FirebaseService) {
+  constructor(public loginService: LoginService, public firebaseService: FirebaseService, public menuCtrl: MenuController) {
   }
 
   ngOnInit() {

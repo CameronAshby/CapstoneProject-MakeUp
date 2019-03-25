@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import {MenuController, Platform} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {LoginService} from './service/login/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -41,10 +43,24 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public loginService: LoginService,
+    private router: Router,
+    public menuCtrl: MenuController
   ) {
     this.initializeApp();
   }
+
+  signOut() {
+    this.loginService.logout();
+    this.router.navigate(['/welcome-page']);
+  }
+
+  signIn() {
+    this.router.navigate(['/welcome-page']);
+  }
+
+
 
   initializeApp() {
     this.platform.ready().then(() => {

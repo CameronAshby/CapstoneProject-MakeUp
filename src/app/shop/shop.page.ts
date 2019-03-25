@@ -22,7 +22,9 @@ export class ShopPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.firebaseService.getFirebaseCart();
+    if(this.loginService.currentUser) {
+      this.firebaseService.getFirebaseCart();
+    }
   }
 
   ngOnInit() {
