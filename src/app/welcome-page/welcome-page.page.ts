@@ -12,10 +12,8 @@ export class WelcomePagePage implements OnInit {
   email: string;
   password: string;
   isNewUser: boolean = false;
-  fbUserArray;
 
   constructor(public loginService: LoginService, public firebaseService: FirebaseService) {
-
   }
 
   ngOnInit() {

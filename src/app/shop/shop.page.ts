@@ -4,6 +4,7 @@ import {ApiService} from '../service/api/api.service';
 import {LoadingController} from '@ionic/angular';
 import {FirebaseService} from '../service/firebase/firebase.service';
 import {LoginService} from '../service/login/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -21,9 +22,7 @@ export class ShopPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    if(this.loginService.currentUser) {
-      this.firebaseService.getCartItems();
-    }
+    this.firebaseService.getFirebaseCart();
   }
 
   ngOnInit() {
