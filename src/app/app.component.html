@@ -7,16 +7,20 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
-            </ion-item>
+        <ion-list class="ionListContainer">
+          <div>
+            <ion-menu-toggle id="sideMenu" auto-hide="false" *ngFor="let p of appPages">
+              <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+                <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                <ion-label>
+                  {{p.title}}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </div>
+          <ion-menu-toggle class="buttonContainer">
+            <ion-button menuClose="sideMenu" (click)="loginService.currentUser ? signOut() : signIn()">{{loginService.currentUser ? 'Sign Out' : 'Sign In'}}</ion-button>
           </ion-menu-toggle>
-          <ion-button>Sign In</ion-button>
         </ion-list>
       </ion-content>
     </ion-menu>
