@@ -14,9 +14,12 @@ import {FirebaseService} from '../../service/firebase/firebase.service';
 })
 export class SearchPage implements OnInit {
 
+  search: string = '';
+
   product$: Observable<any>;
 
   productList: Product[] = [];
+  searchList = null;
 
   constructor(public api: ApiService, private router: Router, private loader: LoadingController, public loginService: LoginService, public firebaseService:FirebaseService) {
     this.product$ = this.api.initializeAPI();
@@ -45,6 +48,19 @@ export class SearchPage implements OnInit {
         loading.dismiss();
       })
     });
+  }
+
+  filterProducts(search: string) {
+    console.log(search);
+    this.searchList = [];
+
+    this.api.apiArray.forEach(product => {
+      if(product.name.toUpperCase().includes(search)) {
+        this.searchList.push(product);
+      }
+    });
+
+    console.log(this.searchList);
   }
 
 }

@@ -3,20 +3,49 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Cart</ion-title>
+    <ion-title>{{loginService.currentUser ? loginService.currentUser.name + "'s Cart" : 'Cart'}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="loginService.currentUser">
-  <div class="loggedIn">
-    <h1> {{ loginService.currentUser.name }}  's Shopping Cart</h1>
-    <ion-card id="cartCard">
-      <ion-card class="cartItem" *ngFor="let item of firebaseService.cartArray">
-        {{ item.picture}}
-        {{item.name}}
-        <!--{{item.product.name}}-->
-        <!--{{item.quantity}}-->
-      </ion-card>
-    </ion-card>
-  </div>
-</ion-content>
+<ion-grid id="container" *ngIf="loginService.currentUser">
+  <ion-row align-items-center class="cartContainer">
+    <div class="cartOptions">
+      <div class="cartOptionsContainer">
+        <ion-button (click)="shopping()"><ion-icon name="arrow-dropleft"></ion-icon>Shopping</ion-button>
+        <div class="totalContainer">
+          <div class="totalTitle">Total</div>
+          <div>${{firebaseService.total | number: '1.2-2'}}</div>
+        </div>
+        <ion-button>Checkout<ion-icon name="arrow-dropright"></ion-icon></ion-button>
+      </div>
+    </div>
+    <ion-col size="10" id="cartCard">
+      <!--<ion-grid><ion-row class="cartHeader"><ion-col size="4"><h3>Product</h3></ion-col><ion-col><h3>Quantity</h3></ion-col><ion-col><h3>Price</h3></ion-col><ion-col><h3>Total</h3></ion-col></ion-row></ion-grid>-->
+      <div class="cartProductContainer">
+        <div class="cartItem" *ngFor="let item of firebaseService.cartArray; let i = index">
+          <div>
+            <ion-row class="cartContent">
+              <ion-col class="imageContainer" size="4">
+                <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="item.product.image_link" alt="API Image Not Available" class="cartImage">
+                <div class="cartTitle">{{item.product.name}}</div><div>{{item.product.brand !== null ? item.product.brand : 'maybelline'}}</div>
+              </ion-col>
+              <ion-col class="cartItemSection"><div (click)="firebaseService.removeItem(i)" class="remove">Remove</div></ion-col>
+              <ion-col class="cartInfo cartItemSection"><ion-input (change)="firebaseService.updateQuantity(item)" class="cartInput" type="number" min="1" [(ngModel)]="item.quantity"></ion-input><div class="timesContainer">X</div><div>${{(item.product.price === '0.0' || item.product.price === null) ? '5.00' : item.product.price + (item.product.price.split('.')[1].length > 1? '': '0')}}</div></ion-col>
+              <ion-col class="cartItemSection">${{(item.product.price === '0.0' || item.product.price === null) ? (item.quantity * 5) + '.00' : ((item.product.price * item.quantity) | number: '1.2-2')}}</ion-col>
+            </ion-row>
+          </div>
+          <div class="flairContainer">
+            <img class="flair" src="../../assets/newflair.png" alt="">
+            <img class="flair" src="../../assets/newflair.png" alt="">
+            <img class="flair" src="../../assets/newflair.png" alt="">
+          </div>
+        </div>
+      </div>
+    </ion-col>
+    <ion-row id="checkout">
+      <ion-col>
+        <div>Checkout</div>
+      </ion-col>
+    </ion-row>
+  </ion-row>
+</ion-grid>

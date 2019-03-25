@@ -10,3 +10,110 @@ ion-toolbar {
 ion-title {
   text-align: center;
 }
+
+.cartImage {
+  width: 215px;
+  height: 150px;
+  margin: 20px 10px 10px 10px;
+  border: 2px solid #DCDCDC;
+}
+
+.cartTitle {
+  margin: 10px 0;
+  text-align: center;
+  font-size: 15px;
+  width: 100%;
+}
+
+h3 {
+  text-decoration: underline;
+}
+
+#container {
+  width: 100%;
+  overflow-y: scroll;
+}
+
+ion-col {
+  text-align: center;
+}
+
+.cartInput {
+  border: 1px solid #DCDCDC;
+  margin-bottom: 10px;
+}
+
+.cartOptionsContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin-top: 20px;
+}
+
+#cartCard {
+  margin: 20px 0;
+  border: 1px solid #DCDCDC;
+}
+
+.cartOptions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.totalContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.totalTitle {
+  font-size: 22px;
+  text-decoration: underline;
+}
+
+.cartItem {
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartContent {
+  display: flex;
+  align-items: center;
+}
+
+.cartHeader {
+  margin-bottom: 20px;
+}
+
+.flairContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.flair {
+  width: 200px;
+  height: 50px;
+}
+
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.remove:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.timesContainer {
+  margin-bottom: 10px;
+}

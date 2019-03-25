@@ -18,7 +18,7 @@
     <ion-card *ngFor="let quality of qualityArray" class="qualitiesListCard">
       <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="quality.image_link" alt="API Image Not Available" class="qualitiesImage">
       <div class="qualitiesTitle">{{quality.name}}</div>
-      <div class="qualitiesInfo">{{quality.brand !== null ? quality.brand : 'maybelline'}} | ${{(quality.price === '0.0' || quality.price === null) ? '5.0' : quality.price}}0</div>
+      <div class="qualitiesInfo">{{quality.brand !== null ? quality.brand : 'maybelline'}} | ${{(quality.price === '0.0' || quality.price === null) ? '5.00' : quality.price + (quality.price.split('.')[1].length > 1? '': '0')}}</div>
       <div class="buttonContainer">
         <ion-button class="qualitiesButton" (click)="showDetails(quality.id)">View Details</ion-button>
         <ion-button class="qualitiesButton" (click)="loginService.currentUser ? firebaseService.addToCart(quality) : routeToLogin()">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
