@@ -15,7 +15,7 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Welcome',
-      url: '/welcome-page',
+      url: '/landing',
       icon: 'home'
     },
     {

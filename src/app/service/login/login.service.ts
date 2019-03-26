@@ -62,6 +62,7 @@ export class LoginService implements OnInit {
                 };
                 this.saveUser(this.currentUser);
                 this.isLoggedIn = true;
+                this.router.navigate(['/landing']);
             }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
@@ -80,6 +81,7 @@ export class LoginService implements OnInit {
                 email: data.user.email,
                 cart: [],
             };
+            this.router.navigate(['/landing']);
         }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
