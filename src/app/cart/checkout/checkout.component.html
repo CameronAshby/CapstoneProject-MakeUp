@@ -1,4 +1,19 @@
 <div class="checkoutContainer">
-  <ion-button (click)="checkout()">Checkout</ion-button>
-  <ion-button (click)="cancelCheckout()">Cancel</ion-button>
+  <ion-card class="checkoutCard">
+    <div class="cardForm">
+      <div class="cardTitle">Checkout Form</div>
+    </div>
+    <div class="cardActions">
+      <div class="actionTitle">Purchase Summary</div>
+      <div class="flairContainer">
+        <img class="flair" src="../../../assets/newflair.png" alt="">
+      </div>
+      <div>Item Count: {{firebaseService.cartArray.length}}</div>
+      <div>Total: ${{firebaseService.total | number: '1.2-2'}}</div>
+      <div class="buttonContainer">
+        <ion-button (click)="cancelCheckout()"><ion-icon name="arrow-dropleft"></ion-icon>View Cart</ion-button>
+        <ion-button (click)="checkout()">Checkout<ion-icon name="arrow-dropright"></ion-icon></ion-button>
+      </div>
+    </div>
+  </ion-card>
 </div>

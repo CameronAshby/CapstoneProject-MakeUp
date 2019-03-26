@@ -18,6 +18,7 @@ export class CartPage implements OnInit {
           this.router.navigate(['/welcome-page']);
       }
       else {
+          this.firebaseService.toggleCheckout = false;
           this.firebaseService.getFirebaseCart();
       }
   }
@@ -32,10 +33,6 @@ export class CartPage implements OnInit {
 
   checkout() {
       this.firebaseService.toggleCheckout = true;
-  }
-
-  closeCheckout() {
-      this.firebaseService.toggleCheckout = false;
   }
 
   ngOnInit() {
