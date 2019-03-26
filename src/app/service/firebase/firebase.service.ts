@@ -16,6 +16,8 @@ export class FirebaseService {
   total: number = 0;
   cartArray = [];
 
+  toggleCheckout: boolean = false;
+
   private cartRef: AngularFirestoreCollection<User>;
 
   constructor(private afs: AngularFirestore, private loginService: LoginService, public apiService:ApiService) {

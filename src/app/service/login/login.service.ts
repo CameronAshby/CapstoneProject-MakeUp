@@ -12,6 +12,7 @@ import {User} from '../../model/User';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {auth} from 'firebase/app';
 import {MenuController} from '@ionic/angular';
+import {Router} from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -27,7 +28,7 @@ export class LoginService implements OnInit {
     private usersRef: AngularFirestoreCollection<User>;
 
 
-    constructor(private db: AngularFirestore, public afAuth: AngularFireAuth) {
+    constructor(private db: AngularFirestore, public afAuth: AngularFireAuth, private router: Router) {
         this.usersRef = this.db.collection<User>(`users`);
     }
 
@@ -43,6 +44,7 @@ export class LoginService implements OnInit {
                     email: data.user.email,
                     cart: [],
                 };
+                this.router.navigate(['/landing']);
             }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
@@ -60,7 +62,6 @@ export class LoginService implements OnInit {
                 };
                 this.saveUser(this.currentUser);
                 this.isLoggedIn = true;
-                console.log("logged in = " + this.isLoggedIn);
             }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
@@ -126,6 +127,12 @@ export class LoginService implements OnInit {
   }
   errorMessage(error) {
       return alert(error.message);
+  }
+
+  authed() {
+        return this.afAuth.authState.pipe(
+            map(res => res ? true : false)
+        )
   }
 
 }

@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: './welcome-page/welcome-page.module#WelcomePagePageModule'
   },
   {
+    path: 'landing',
+    loadChildren: './landing/landing.module#LandingPageModule'
+  },
+  {
     path: 'about',
     loadChildren: './about/about.module#AboutPageModule'
   },
