@@ -52,7 +52,6 @@ ion-col {
 
 #cartCard {
   margin: 20px 0;
-  border: 1px solid #DCDCDC;
 }
 
 .cartOptions {
@@ -74,9 +73,6 @@ ion-col {
   text-decoration: underline;
 }
 
-.cartItem {
-}
-
 .imageContainer {
   display: flex;
   flex-direction: column;
@@ -84,9 +80,23 @@ ion-col {
   align-items: center;
 }
 
-.cartContent {
+.imageContainer:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cartContentContainer {
   display: flex;
+  justify-content: center;
   align-items: center;
+}
+
+.cartContent {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
 }
 
 .cartHeader {

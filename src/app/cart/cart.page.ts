@@ -26,6 +26,18 @@ export class CartPage implements OnInit {
       this.router.navigate(['/shop']);
   }
 
+  changeToProduct(id) {
+      this.router.navigate([`/shop/product-page/${id}`]);
+  }
+
+  checkout() {
+      this.firebaseService.toggleCheckout = true;
+  }
+
+  closeCheckout() {
+      this.firebaseService.toggleCheckout = false;
+  }
+
   ngOnInit() {
   }
 }
