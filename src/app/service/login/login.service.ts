@@ -11,7 +11,6 @@ import {
 import {User} from '../../model/User';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {auth} from 'firebase/app';
-import {MenuController} from '@ionic/angular';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -21,10 +20,8 @@ export class LoginService implements OnInit {
 
     currentUser: User;
     userName: string;
-    userArray: User[];
     isLoggedIn: boolean = false;
 
-    private userRef: AngularFirestoreDocument<User>;
     private usersRef: AngularFirestoreCollection<User>;
 
 
@@ -33,7 +30,6 @@ export class LoginService implements OnInit {
     }
 
     ngOnInit(): void {
-
     }
 
     googleSignIn() {
@@ -43,7 +39,9 @@ export class LoginService implements OnInit {
                     name: data.user.displayName,
                     email: data.user.email,
                     cart: [],
+                    purchaseHistory: []
                 };
+                console.log(this.currentUser.purchaseHistory);
                 this.router.navigate(['/landing']);
             }).catch(error => {
             console.log('Error logging in...', error);
@@ -58,7 +56,8 @@ export class LoginService implements OnInit {
                     name: this.userName,
                     email: data.user.email,
                     cart: [],
-                    password: password
+                    password: password,
+                    purchaseHistory: []
                 };
                 this.saveUser(this.currentUser);
                 this.isLoggedIn = true;
@@ -80,6 +79,7 @@ export class LoginService implements OnInit {
                 name: userName,
                 email: data.user.email,
                 cart: [],
+                purchaseHistory: []
             };
             this.router.navigate(['/landing']);
         }).catch(error => {
