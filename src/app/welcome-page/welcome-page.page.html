@@ -7,7 +7,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding *ngIf="!loginService.currentUser">
+<ion-content padding>
 
     <div *ngIf="isNewUser" class="welcomeContent">
         <div class="backgroundCard">
@@ -60,22 +60,6 @@
                     </div>
                 </div>
             </ion-card>
-        </div>
-    </div>
-</ion-content>
-
-<ion-content *ngIf="loginService.currentUser">
-    <div>Hi {{loginService.currentUser.name}}!</div>
-    <ion-button (click)="loginService.logout(); cancel()">Logout</ion-button>
-
-    <h1>Oasis...Where its all up to your imagination</h1>
-
-    <div class="landingContent">
-        <div class="pictures">
-            <div class="imgage1"></div>
-            <div class="imgage2"></div>
-            <div class="imgage3"></div>
-            <div class="imgage4"></div>
         </div>
     </div>
 </ion-content>

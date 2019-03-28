@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LoginService} from '../service/login/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPage implements OnInit {
 
-  constructor() { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    if(!this.loginService.currentUser) {
+      this.router.navigate(['/welcome-page']);
+    }
   }
 
 }
