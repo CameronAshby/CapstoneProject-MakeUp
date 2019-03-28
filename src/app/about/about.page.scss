@@ -10,3 +10,36 @@ ion-toolbar {
 ion-title {
   text-align: center;
 }
+.headerContainer{
+  display: flex;
+  flex-direction: row;
+  margin: 40px auto;
+  width: 100%;
+}
+.bodyContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.cardBody{
+  width: 30%;
+  margins: 40px auto;
+  border: #FEDBD0;
+  border-style: solid;
+  //background-color: #FEDBD0;
+}
+
+.written{
+  padding: 30px;
+  color: #442C2E;
+  font-family: 'Poiret One', cursive;
+  font-size: 18px;
+}
+
+.description{
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #442C2E;
+  font-family: 'Poiret One', cursive;
+}
