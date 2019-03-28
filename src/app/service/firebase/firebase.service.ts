@@ -31,6 +31,12 @@ export class FirebaseService {
     });
   }
 
+  getFirebaseHistory() {
+    this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).ref.onSnapshot(doc => {
+      this.loginService.currentUser.purchaseHistory = (doc.data() as User).purchaseHistory;
+    });
+  }
+
   addToCart(item){
     let found = false;
     if(this.cartArray.length !== 0) {
@@ -85,10 +91,13 @@ export class FirebaseService {
   }
 
   updateFirebase() {
+    this.getFirebaseHistory();
+    console.log(this.loginService.currentUser.purchaseHistory);
     this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).set({
       cart: this.cartArray,
       email: this.loginService.currentUser.email,
       name: this.loginService.currentUser.name,
+      purchaseHistory: this.loginService.currentUser.purchaseHistory
     })
   }
 }

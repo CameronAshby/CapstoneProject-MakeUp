@@ -1,11 +1,12 @@
 import {Product} from './product';
+import {Order} from './Order';
 
 export interface User {
     name: string;
     email: string;
     cart: Product[];
-    orders?: Product[];
+    purchaseHistory?: Order[];
     favorites?: Product[];
-    ratings?: [];
+    ratings?: any[];
     password?: string;
 }
