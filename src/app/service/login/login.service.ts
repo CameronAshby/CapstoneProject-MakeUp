@@ -38,8 +38,6 @@ export class LoginService implements OnInit {
                 this.currentUser = {
                     name: data.user.displayName,
                     email: data.user.email,
-                    cart: [],
-                    purchaseHistory: []
                 };
                 console.log(this.currentUser.purchaseHistory);
                 this.router.navigate(['/landing']);
@@ -55,9 +53,7 @@ export class LoginService implements OnInit {
                 this.currentUser = {
                     name: this.userName,
                     email: data.user.email,
-                    cart: [],
                     password: password,
-                    purchaseHistory: []
                 };
                 this.saveUser(this.currentUser);
                 this.isLoggedIn = true;
@@ -78,8 +74,6 @@ export class LoginService implements OnInit {
             this.currentUser = {
                 name: userName,
                 email: data.user.email,
-                cart: [],
-                purchaseHistory: []
             };
             this.router.navigate(['/landing']);
         }).catch(error => {

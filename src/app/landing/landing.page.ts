@@ -21,7 +21,6 @@ export class LandingPage implements OnInit {
     }
     else {
       this.firebaseService.updateFirebase();
-      console.log(this.loginService.currentUser.purchaseHistory);
     }
   }
 
