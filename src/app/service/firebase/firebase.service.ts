@@ -92,7 +92,6 @@ export class FirebaseService {
 
   updateFirebase() {
     this.getFirebaseHistory();
-    console.log(this.loginService.currentUser.purchaseHistory);
     this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).set({
       cart: this.cartArray,
       email: this.loginService.currentUser.email,
