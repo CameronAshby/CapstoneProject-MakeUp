@@ -32,38 +32,17 @@ export class LoginService implements OnInit {
     ngOnInit(): void {
     }
 
-    getFirebaseCart() {
-        this.afs.collection<User>(`users`).doc<User>(this.currentUser.email).ref.onSnapshot(doc => {
-            return (doc.data() as User).cart;
-        });
-    }
-
-    getFirebaseHistory() {
-        this.afs.collection<User>(`users`).doc<User>(this.currentUser.email).ref.onSnapshot(doc => {
-            return (doc.data() as User).purchaseHistory;
-        });
-    }
-
     googleSignIn() {
         console.log('called Sign in');
         this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
             .then(info => {
                 this.getUsersObservable().subscribe((data) => {
-                    console.log('in Login Observable');
                     this.currentUser = data.filter((user) => user.email === info.user.email)[0];
-                    console.log(this.currentUser);
                     this.isLoggedIn = true;
                     if(window.location.href.split('/')[3] === 'welcome-page') {
                         this.router.navigate(['/landing']);
                     }
                 });
-                // this.currentUser = {
-                //     name: data.user.displayName,
-                //     email: data.user.email,
-                //     cart: this.getFirebaseCart(data.user.email),
-                //     purchaseHistory: this.getFirebaseHistory(data.user.email)
-                // };
-                // this.router.navigate(['/landing']);
             }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
@@ -101,7 +80,9 @@ export class LoginService implements OnInit {
                     this.currentUser = data.filter((user) => user.email === info.user.email)[0];
                     console.log(this.currentUser);
                     this.isLoggedIn = true;
-                    this.router.navigate(['/landing']);
+                    if(window.location.href.split('/')[3] === 'welcome-page') {
+                        this.router.navigate(['/landing']);
+                    }
                 });
         }).catch(error => {
             this.errorMessage(error);
