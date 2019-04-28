@@ -19,9 +19,6 @@ export class LandingPage implements OnInit {
     if(!this.loginService.currentUser) {
       this.router.navigate(['/welcome-page']);
     }
-    else {
-      this.firebaseService.updateFirebase();
-    }
   }
 
 }
