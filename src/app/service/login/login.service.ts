@@ -21,6 +21,8 @@ export class LoginService implements OnInit {
     currentUser: User;
     userName: string;
     isLoggedIn: boolean = false;
+    userCart;
+    userPurchaseHistory;
 
     private usersRef: AngularFirestoreCollection<User>;
 
@@ -33,6 +35,7 @@ export class LoginService implements OnInit {
     }
 
     googleSignIn() {
+
         this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
             .then(data => {
                 this.currentUser = {
@@ -41,6 +44,14 @@ export class LoginService implements OnInit {
                 };
                 console.log(this.currentUser.purchaseHistory);
                 this.router.navigate(['/landing']);
+                this.usersRef.doc<User>(this.currentUser.email).ref.onSnapshot(doc => {
+
+
+
+                    this.userCart = doc.data().cart;
+                    this. userPurchaseHistory = doc.data().purchaseHistory;
+
+                });
             }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
@@ -54,6 +65,8 @@ export class LoginService implements OnInit {
                     name: this.userName,
                     email: data.user.email,
                     password: password,
+                    cart: [],
+                    purchaseHistory: []
                 };
                 this.saveUser(this.currentUser);
                 this.isLoggedIn = true;
@@ -68,12 +81,17 @@ export class LoginService implements OnInit {
         let userName = '';
         this.usersRef.doc<User>(email).ref.onSnapshot(doc => {
             userName = doc.data().name;
+            this.userCart = doc.data().cart;
+           this. userPurchaseHistory = doc.data().purchaseHistory;
+
         });
         this.afAuth.auth.signInWithEmailAndPassword(email, password)
             .then(data => {
             this.currentUser = {
                 name: userName,
                 email: data.user.email,
+                cart: this.userCart,
+                purchaseHistory: this.userPurchaseHistory
             };
             this.router.navigate(['/landing']);
         }).catch(error => {

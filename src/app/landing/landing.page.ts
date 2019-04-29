@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../service/login/login.service';
 import {Router} from '@angular/router';
 import {FirebaseService} from '../service/firebase/firebase.service';
+import {User} from '../model/User';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-landing',
@@ -10,7 +12,7 @@ import {FirebaseService} from '../service/firebase/firebase.service';
 })
 export class LandingPage implements OnInit {
 
-  constructor(private loginService: LoginService, private router: Router, private firebaseService: FirebaseService) { }
+  constructor(private afs: AngularFirestore, private loginService: LoginService, private router: Router, private firebaseService: FirebaseService) { }
 
   ngOnInit() {
   }
@@ -20,6 +22,9 @@ export class LandingPage implements OnInit {
       this.router.navigate(['/welcome-page']);
     }
     else {
+      this.afs.collection<User>(`users`).ref.onSnapshot(doc => {
+        console.log(doc)
+      });
       this.firebaseService.updateFirebase();
     }
   }
