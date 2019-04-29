@@ -10,7 +10,7 @@
 <ion-content padding>
 
   <ion-card>
-    <ion-card>{{ loginService.currentUser.name }}</ion-card>
+    <ion-card>{{ loginService.currentUser ? loginService.currentUser.name : ''}}</ion-card>
       <ion-card class="profileContent">
         <ion-card class="favoritesContainer">
           <ion-card class="showFavs" *ngIf="seeFavs">

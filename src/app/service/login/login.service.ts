@@ -12,6 +12,7 @@ import {User} from '../../model/User';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {auth} from 'firebase/app';
 import {Router} from '@angular/router';
+import {Product} from '../../model/product';
 
 @Injectable({
     providedIn: 'root'
@@ -24,8 +25,7 @@ export class LoginService implements OnInit {
 
     private usersRef: AngularFirestoreCollection<User>;
 
-
-    constructor(private db: AngularFirestore, public afAuth: AngularFireAuth, private router: Router) {
+    constructor(private db: AngularFirestore, public afAuth: AngularFireAuth, private router: Router, private afs: AngularFirestore) {
         this.usersRef = this.db.collection<User>(`users`);
     }
 
@@ -33,18 +33,20 @@ export class LoginService implements OnInit {
     }
 
     googleSignIn() {
+        console.log('called Sign in');
         this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
-            .then(data => {
-                this.currentUser = {
-                    name: data.user.displayName,
-                    email: data.user.email,
-                };
-                console.log(this.currentUser.purchaseHistory);
-                this.router.navigate(['/landing']);
+            .then(info => {
+                this.getUsersObservable().subscribe((data) => {
+                    this.currentUser = data.filter((user) => user.email === info.user.email)[0];
+                    this.isLoggedIn = true;
+                    if(window.location.href.split('/')[3] === 'welcome-page') {
+                        this.router.navigate(['/landing']);
+                    }
+                });
             }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
-        })
+        });
     }
 
     newUser(email, password) {
@@ -54,6 +56,8 @@ export class LoginService implements OnInit {
                     name: this.userName,
                     email: data.user.email,
                     password: password,
+                    cart: [],
+                    purchaseHistory: []
                 };
                 this.saveUser(this.currentUser);
                 this.isLoggedIn = true;
@@ -70,14 +74,17 @@ export class LoginService implements OnInit {
             userName = doc.data().name;
         });
         this.afAuth.auth.signInWithEmailAndPassword(email, password)
-            .then(data => {
-            this.currentUser = {
-                name: userName,
-                email: data.user.email,
-            };
-            this.router.navigate(['/landing']);
+            .then(info => {
+                this.getUsersObservable().subscribe((data) => {
+                    console.log(data);
+                    this.currentUser = data.filter((user) => user.email === info.user.email)[0];
+                    console.log(this.currentUser);
+                    this.isLoggedIn = true;
+                    if(window.location.href.split('/')[3] === 'welcome-page') {
+                        this.router.navigate(['/landing']);
+                    }
+                });
         }).catch(error => {
-            console.log('Error logging in...', error);
             this.errorMessage(error);
         });
     }
@@ -97,7 +104,8 @@ export class LoginService implements OnInit {
                         return {
                             name: item.payload.doc.data().name,
                             email: item.payload.doc.data().email,
-                            cart: item.payload.doc.data().cart,
+                            cart: (item.payload.doc.data().cart ? item.payload.doc.data().cart : []),
+                            purchaseHistory: (item.payload.doc.data().purchaseHistory ? item.payload.doc.data().purchaseHistory : []),
                             password: item.payload.doc.data().password,
                         } as User;
                     });
@@ -110,25 +118,7 @@ export class LoginService implements OnInit {
       this.usersRef.doc(this.afAuth.auth.currentUser.email).set(this.currentUser);
   }
 
-  // editUser(userId: string, user: any) {
-  //   return this.usersRef.doc(userId).update(user)
-  //       .then(_ => console.log('Success on update'))
-  //       .catch(error => console.log('update', error));
-  // }
-
-  removeUser(email: string) {
-    return this.usersRef.doc(email).delete()
-        .then(_ => console.log('Success on remove'))
-        .catch(error => console.log('remove', error));
-  }
   errorMessage(error) {
       return alert(error.message);
   }
-
-  authed() {
-        return this.afAuth.authState.pipe(
-            map(res => res ? true : false)
-        )
-  }
-
 }
