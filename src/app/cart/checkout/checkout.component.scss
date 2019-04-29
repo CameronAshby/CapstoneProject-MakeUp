@@ -32,6 +32,7 @@
 .cardTitle, .actionTitle {
   margin: 20px 0;
   font-size: 20px;
+  text-align: center;
 }
 
 .cardForm, .cardActions {
@@ -40,4 +41,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.cardForm {
+  padding-right: 15px;
+  border-right: 2px solid #442C2E;
+}
+
+input{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+ion-select {
+  border: 1px solid #BFBFBF;
+}
+
+.orderDetailItem {
+  margin-bottom: 10px;
 }
