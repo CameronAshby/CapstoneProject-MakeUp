@@ -15,6 +15,7 @@ export class FirebaseService {
 
   total: number = 0;
   cartArray = [];
+  userArray = [];
 
   toggleCheckout: boolean = false;
 
@@ -22,6 +23,7 @@ export class FirebaseService {
 
   constructor(private afs: AngularFirestore, private loginService: LoginService, public apiService:ApiService) {
     this.cartRef = this.afs.collection<User>(`users`);
+    console.log("cart ref" + this.cartRef)
   }
 
   getFirebaseCart() {
@@ -90,12 +92,10 @@ export class FirebaseService {
     this.cartArray.splice(index, 1);
     this.updateFirebase();
   }
-
   async getHistory() {
     await this.getFirebaseCart();
     await this.getFirebaseHistory();
   }
-
   updateFirebase() {
     this.getHistory().then(() => {
       this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).set({

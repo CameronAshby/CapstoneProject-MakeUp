@@ -22,6 +22,8 @@ export class LoginService implements OnInit {
     currentUser: User;
     userName: string;
     isLoggedIn: boolean = false;
+    userCart;
+    userPurchaseHistory;
 
     private usersRef: AngularFirestoreCollection<User>;
 
@@ -41,7 +43,6 @@ export class LoginService implements OnInit {
                     this.isLoggedIn = true;
                     if(window.location.href.split('/')[3] === 'welcome-page') {
                         this.router.navigate(['/landing']);
-                    }
                 });
             }).catch(error => {
             console.log('Error logging in...', error);
@@ -72,6 +73,9 @@ export class LoginService implements OnInit {
         let userName = '';
         this.usersRef.doc<User>(email).ref.onSnapshot(doc => {
             userName = doc.data().name;
+            this.userCart = doc.data().cart;
+           this. userPurchaseHistory = doc.data().purchaseHistory;
+
         });
         this.afAuth.auth.signInWithEmailAndPassword(email, password)
             .then(info => {
