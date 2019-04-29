@@ -65,6 +65,7 @@ export class FirebaseService {
     }
     this.updateFirebase();
     this.itemTotal();
+    console.log('add cart complete')
   }
 
   updateQuantity(item) {
@@ -91,17 +92,18 @@ export class FirebaseService {
     this.cartArray.splice(index, 1);
     this.updateFirebase();
   }
-  //
-  // checkUser(){
-  //   if(this.loginService.currentUser.email)
-  // }
+  async getHistory() {
+    await this.getFirebaseCart();
+    await this.getFirebaseHistory();
+  }
   updateFirebase() {
-    this.getFirebaseHistory();
-    this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).set({
-      cart: this.cartArray,
-      email: this.loginService.currentUser.email,
-      name: this.loginService.currentUser.name,
-      purchaseHistory: this.loginService.currentUser.purchaseHistory
-    })
+    this.getHistory().then(() => {
+      this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).set({
+        cart: this.cartArray,
+        email: this.loginService.currentUser.email,
+        name: this.loginService.currentUser.name,
+        purchaseHistory: (this.loginService.currentUser.purchaseHistory ? this.loginService.currentUser.purchaseHistory : []),
+      });
+    });
   }
 }

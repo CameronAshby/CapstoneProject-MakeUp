@@ -21,12 +21,6 @@ export class LandingPage implements OnInit {
     if(!this.loginService.currentUser) {
       this.router.navigate(['/welcome-page']);
     }
-    else {
-      this.afs.collection<User>(`users`).ref.onSnapshot(doc => {
-        console.log(doc)
-      });
-      this.firebaseService.updateFirebase();
-    }
   }
 
 }
