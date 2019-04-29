@@ -43,7 +43,7 @@ export class LoginService implements OnInit {
                     this.isLoggedIn = true;
                     if(window.location.href.split('/')[3] === 'welcome-page') {
                         this.router.navigate(['/landing']);
-                });
+                    }});
             }).catch(error => {
             console.log('Error logging in...', error);
             this.errorMessage(error);
