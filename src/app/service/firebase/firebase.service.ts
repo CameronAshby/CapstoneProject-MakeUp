@@ -23,7 +23,6 @@ export class FirebaseService {
 
   constructor(private afs: AngularFirestore, private loginService: LoginService, public apiService:ApiService) {
     this.cartRef = this.afs.collection<User>(`users`);
-    console.log("cart ref" + this.cartRef)
   }
 
   getFirebaseCart() {

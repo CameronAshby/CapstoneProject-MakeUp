@@ -40,6 +40,15 @@ export class LoginService implements OnInit {
             .then(info => {
                 this.getUsersObservable().subscribe((data) => {
                     this.currentUser = data.filter((user) => user.email === info.user.email)[0];
+                    if(this.currentUser === undefined) {
+                        this.currentUser = {
+                            name: info.user.displayName,
+                            email: info.user.email,
+                            cart: [],
+                            purchaseHistory: []
+                        };
+                    }
+                    console.log(this.currentUser);
                     this.isLoggedIn = true;
                     if(window.location.href.split('/')[3] === 'welcome-page') {
                         this.router.navigate(['/landing']);
