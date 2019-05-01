@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ApiService} from '../../service/api/api.service';
-import {LoadingController} from '@ionic/angular';
+import {LoadingController, ToastController} from '@ionic/angular';
 import {LoginService} from '../../service/login/login.service';
 import {FirebaseService} from '../../service/firebase/firebase.service';
 
@@ -41,11 +41,11 @@ export class QualitiesPage implements OnInit {
 
   qualityArray = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private loader: LoadingController, public loginService: LoginService, public firebaseService:FirebaseService) { }
+  constructor(private toastController: ToastController, private router: Router, private route: ActivatedRoute, private api: ApiService, private loader: LoadingController, public loginService: LoginService, public firebaseService:FirebaseService) { }
 
   ngOnInit() {
     if(this.api.apiArray.length === 0) {
-      this.getApiArray();
+      this.api.getApi();
     }
 
     this.id = this.route.snapshot.paramMap.get('id');
@@ -66,14 +66,17 @@ export class QualitiesPage implements OnInit {
     this.router.navigate(['/welcome-page']);
   }
 
-  async getApiArray() {
-    const loading = await this.loader.create();
-    loading.present().then(() => {
-      this.api.initializeAPI().subscribe((data) => {
-        this.api.apiArray = data;
-        console.log(data);
-        loading.dismiss();
-      })
+  addToCart(item) {
+    this.presentToast();
+    this.firebaseService.addToCart(item);
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Added to Cart',
+      duration: 800,
+      color: 'tertiary'
     });
+    toast.present();
   }
 }

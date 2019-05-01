@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
 import {ApiService} from '../service/api/api.service';
 import {LoadingController} from '@ionic/angular';
 import {FirebaseService} from '../service/firebase/firebase.service';
 import {LoginService} from '../service/login/login.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -13,30 +11,16 @@ import {Router} from '@angular/router';
 })
 export class ShopPage implements OnInit {
 
-  product$: Observable<any>;
-
-  product: {};
-
   constructor(private api: ApiService, private loader: LoadingController, private firebaseService: FirebaseService, private loginService: LoginService) {
-    this.product$ = this.api.initializeAPI();
   }
 
   ionViewDidEnter() {
-    if(this.loginService.currentUser) {
-      this.firebaseService.updateFirebase();
-      this.firebaseService.getFirebaseCart();
+    if(this.api.apiArray.length === 0) {
+      this.api.getApi();
     }
   }
 
   ngOnInit() {
-    // const loading = await this.loader.create();
-    // loading.present().then(() => {
-    //   this.api.initializeAPI().subscribe((data) => {
-    //     this.api.apiArray = data;
-    //     console.log(data);
-    //     loading.dismiss();
-    //   })
-    // });
   }
 
 }

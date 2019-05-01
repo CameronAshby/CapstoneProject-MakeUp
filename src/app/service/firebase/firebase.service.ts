@@ -19,6 +19,7 @@ export class FirebaseService {
   userArray = [];
 
   toggleCheckout: boolean = false;
+  toggleSelectedItem: Product;
 
   private cartRef: AngularFirestoreCollection<User>;
 

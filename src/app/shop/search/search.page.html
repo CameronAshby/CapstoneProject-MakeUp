@@ -8,7 +8,7 @@
   <ion-searchbar placeholder="Search Products..." showCancelButton="true" [(ngModel)]="search" (change)="filterProducts(search.toUpperCase())"></ion-searchbar>
 
   <div *ngIf="product$ | async as productList" >
-    <div *ngIf="searchList" class="searchListContainer">
+    <div *ngIf="searchList.length !== 0" class="searchListContainer">
       <ion-card *ngFor="let product of searchList" class="searchListCard">
         <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="product.image_link" alt="API Image Not Available" class="searchImage">
         <div class="searchTitle">{{product.name}}</div>
@@ -19,14 +19,14 @@
         </div>
       </ion-card>
     </div>
-    <div *ngIf="!searchList" class="searchListContainer">
+    <div *ngIf="searchList.length === 0" class="searchListContainer">
       <ion-card *ngFor="let product of productList" class="searchListCard">
         <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="product.image_link" alt="API Image Not Available" class="searchImage">
         <div class="searchTitle">{{product.name}}</div>
         <div class="searchInfo">{{product.brand !== null ? product.brand : 'maybelline'}} | ${{(product.price === '0.0' || product.price === null) ? '5.00' : product.price + (product.price.split('.')[1].length > 1? '': '0')}}</div>
         <div class="buttonContainer">
           <ion-button class="searchButton" (click)="showDetails(product.id)">View Details</ion-button>
-          <ion-button class="searchButton" (click)="loginService.currentUser ? firebaseService.addToCart(product) : routeToLogin()">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
+          <ion-button class="searchButton" (click)="loginService.currentUser ? addToCart(product) : routeToLogin()">{{loginService.currentUser ? 'Add To Cart' : 'Sign In For Cart'}}</ion-button>
         </div>
       </ion-card>
     </div>
