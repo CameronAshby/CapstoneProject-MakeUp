@@ -11,41 +11,65 @@ ion-title {
   text-align: center;
 }
 
-h1{
-  text-align: center;
-}
-.pictures{
+.imageContainer {
   width: 100%;
-  height: 400px;
   display: flex;
-  flex-direction: row;
-}
-.imgage1{
-  width: 100%;
-  margin: 0;
-  background-image: url("../../assets/unsplash/assortedMakeup.jpeg");
-  background-size: cover;
-}
-.imgage2{
-  width: 100%;
-  margin: 0;
-  background-image: url("../../assets/unsplash/makeUpBag.jpeg");
-  background-size: cover;
-}
-.imgage3 {
-  width: 100%;
-  margin: 0;
-  background-image: url("../../assets/unsplash/pinkBoxEyeshadowPalette.jpeg");
-  background-size: cover;
-}
-.imgage4{
-  width: 100%;
-  margin: 0;
-  background-image: url("../../assets/unsplash/powderEyeshadow.jpeg");
-  background-size: cover;
+  justify-content: center;
+  align-items: flex-end;
 }
 
-footer{
-  height: 200px;
-  background-color: #FEEAE6;
+.makeupImage {
+  height: 400px;
+  width: 25%;
+}
+
+.slogan {
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+  font-size: 25px;
+  font-weight: bold;
+  font-style: italic;
+  background: #FEEAE6;
+  border-top: 1px solid #442C2E;
+  border-bottom: 1px solid #442C2E;
+  padding: 20px;
+}
+
+.flairContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.flair {
+  width: 200px;
+  height: 50px;
+}
+
+.cartIconContainer {
+  padding: 0 8px;
+  width: 42px;
+  height: 32px;
+  font-size: 25px;
+}
+
+.cartIconContainer:hover {
+  cursor: pointer;
+}
+
+.startShopping {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shoppingButton {
+  padding: 20px 10px;
+  font-size: 20px;
+  background: #FEDBD0;
+  border-radius: 10px;
+  box-shadow: 9px 6px 31px -12px rgba(0,0,0,0.75);
 }
