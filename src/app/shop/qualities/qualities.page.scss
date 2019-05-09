@@ -90,3 +90,20 @@
   flex-direction: column;
   align-items: center;
 }
+
+@media only screen and (max-width: 700px) {
+  .qualitiesListContainer {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .qualitiesCard {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .qualitiesTagName {
+    width: 80%;
+    text-align: center;
+  }
+}
