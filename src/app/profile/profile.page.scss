@@ -46,6 +46,7 @@ ion-label {
 .productImage {
   width: 100px;
   height: 100px;
+  border: 1px solid #DCDCDC;
 }
 .purchase {
   display: flex;
@@ -69,7 +70,7 @@ ion-label {
   width: 200px;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin: 10px 10px 15px 10px;
   cursor: pointer;
   text-align: center;
 }
