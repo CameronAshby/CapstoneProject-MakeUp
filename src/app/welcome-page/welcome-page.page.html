@@ -18,8 +18,8 @@
                 </div>
                 <div class="signUpInputContainer">
                     <input type="text" [(ngModel)]="name" placeholder="Name" id="newName">
-                    <input type="email" [(ngModel)]="email" placeholder="email" id="newEmail">
-                    <input type="password" [(ngModel)]="password" placeholder="password" id="newPassword">
+                    <input type="email" [(ngModel)]="email" placeholder="Email" id="newEmail">
+                    <input type="password" [(ngModel)]="password" placeholder="Password" id="newPassword">
                     <div class="signUpButtons">
                         <ion-button class="signUpBtn" (click)="loginService.newUser(email, password); setUserName(name)">Register</ion-button>
                         <ion-button class="signUpBtn cancelButton" (click)="cancel()">Cancel</ion-button>
@@ -35,8 +35,8 @@
                 <div class="signInCard">
                     <ion-card-header>Member Sign In</ion-card-header>
                     <div class="inputContainer">
-                        <input type="email" [(ngModel)]="email" placeholder="email" id="email">
-                        <input type="password" [(ngModel)]="password" placeholder="password" id="password">
+                        <input type="email" [(ngModel)]="email" placeholder="Email" id="email">
+                        <input type="password" [(ngModel)]="password" placeholder="Password" id="password">
                     </div>
                     <ion-button id="emailSignInbtn" (click)="loginService.emailSignIn(email, password); setUserName(name)">Sign In</ion-button>
                     <div class="or">- - Or - -</div>

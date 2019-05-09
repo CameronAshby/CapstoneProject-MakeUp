@@ -1,15 +1,38 @@
 <div class="checkoutContainer">
   <ion-card class="checkoutCard">
     <div class="cardForm">
-      <div class="cardTitle">Checkout Form</div>
+      <div class="cardTitle">Shipping Information</div>
+      <form>
+        <input required placeholder="First Name">
+        <input required placeholder="Last Name">
+
+        <input required placeholder="Phone">
+        <input required placeholder="Email">
+
+        <input required placeholder="Address">
+
+        <div class="flairContainer">
+          <img class="flair" src="../../../assets/newflair.png" alt="">
+        </div>
+
+        <div class="cardTitle">Shipping Service</div>
+
+        <ion-select>
+          <ion-select-option>Standard - 14 Days</ion-select-option>
+          <ion-select-option>Expedited - 7 Days</ion-select-option>
+          <ion-select-option>Express - 3 Days</ion-select-option>
+        </ion-select>
+      </form>
     </div>
     <div class="cardActions">
       <div class="actionTitle">Purchase Summary</div>
+      <div class="orderDetails">
+        <div class="orderDetailItem">Item Count: {{firebaseService.totalQuantity}}</div>
+        <div class="orderDetailItem">Total: ${{firebaseService.total | number: '1.2-2'}}</div>
+      </div>
       <div class="flairContainer">
         <img class="flair" src="../../../assets/newflair.png" alt="">
       </div>
-      <div>Item Count: {{firebaseService.cartArray.length}}</div>
-      <div>Total: ${{firebaseService.total | number: '1.2-2'}}</div>
       <div class="buttonContainer">
         <ion-button (click)="cancelCheckout()"><ion-icon name="arrow-dropleft"></ion-icon>View Cart</ion-button>
         <ion-button (click)="checkout()">Checkout<ion-icon name="arrow-dropright"></ion-icon></ion-button>

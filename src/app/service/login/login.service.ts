@@ -12,7 +12,6 @@ import {User} from '../../model/User';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {auth} from 'firebase/app';
 import {Router} from '@angular/router';
-import {Product} from '../../model/product';
 
 @Injectable({
     providedIn: 'root'
@@ -35,7 +34,6 @@ export class LoginService implements OnInit {
     }
 
     googleSignIn() {
-        console.log('called Sign in');
         this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
             .then(info => {
                 this.getUsersObservable().subscribe((data) => {
@@ -48,7 +46,6 @@ export class LoginService implements OnInit {
                             purchaseHistory: []
                         };
                     }
-                    console.log(this.currentUser);
                     this.isLoggedIn = true;
                     if(window.location.href.split('/')[3] === 'welcome-page') {
                         this.router.navigate(['/landing']);
@@ -89,9 +86,7 @@ export class LoginService implements OnInit {
         this.afAuth.auth.signInWithEmailAndPassword(email, password)
             .then(info => {
                 this.getUsersObservable().subscribe((data) => {
-                    console.log(data);
                     this.currentUser = data.filter((user) => user.email === info.user.email)[0];
-                    console.log(this.currentUser);
                     this.isLoggedIn = true;
                     if(window.location.href.split('/')[3] === 'welcome-page') {
                         this.router.navigate(['/landing']);

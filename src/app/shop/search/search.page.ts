@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {ApiService} from '../../service/api/api.service';
 import {Router} from '@angular/router';
-import {LoadingController} from '@ionic/angular';
+import {LoadingController, ToastController} from '@ionic/angular';
 import {Product} from '../../model/product';
 import {LoginService} from '../../service/login/login.service';
 import {FirebaseService} from '../../service/firebase/firebase.service';
@@ -19,15 +19,15 @@ export class SearchPage implements OnInit {
   product$: Observable<any>;
 
   productList: Product[] = [];
-  searchList = null;
+  searchList = [];
 
-  constructor(public api: ApiService, private router: Router, private loader: LoadingController, public loginService: LoginService, public firebaseService:FirebaseService) {
+  constructor(private toastController: ToastController, public api: ApiService, private router: Router, private loader: LoadingController, public loginService: LoginService, public firebaseService:FirebaseService) {
     this.product$ = this.api.initializeAPI();
   }
 
   ngOnInit() {
     if(this.api.apiArray.length === 0) {
-      this.getApiArray();
+      this.api.getApi();
     }
   }
 
@@ -37,17 +37,6 @@ export class SearchPage implements OnInit {
 
   routeToLogin() {
     this.router.navigate(['/welcome-page']);
-  }
-
-  async getApiArray() {
-    const loading = await this.loader.create();
-    loading.present().then(() => {
-      this.api.initializeAPI().subscribe((data) => {
-        this.api.apiArray = data;
-        console.log(data);
-        loading.dismiss();
-      })
-    });
   }
 
   filterProducts(search: string) {
@@ -61,6 +50,20 @@ export class SearchPage implements OnInit {
     });
 
     console.log(this.searchList);
+  }
+
+  addToCart(item) {
+    this.presentToast();
+    this.firebaseService.addToCart(item);
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Added to Cart',
+      duration: 800,
+      color: 'tertiary'
+    });
+    toast.present();
   }
 
 }

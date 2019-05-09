@@ -18,20 +18,22 @@ export class CheckoutComponent implements OnInit {
   checkout() {
     let history: Product[] = [];
     this.firebaseService.getFirebaseCart();
-    this.firebaseService.cartArray.forEach((product) => {
-      history.push(product);
-    });
-    // this.firebaseService.getFirebaseHistory();
-    // console.log(this.loginService.currentUser.purchaseHistory);
-    this.loginService.currentUser.purchaseHistory.push({
-      order: history,
-      total: this.firebaseService.total
-    });
-    // console.log(this.loginService.currentUser.purchaseHistory);
-    this.firebaseService.cartArray = [];
-    // this.firebaseService.updateHistory();
-    this.firebaseService.updateFirebase();
-    this.router.navigate(['/landing']);
+    if(this.firebaseService.cartArray.length === 0) {
+      console.log('Must have items in cart');
+      this.router.navigate(['/landing']);
+    }
+    else {
+      this.firebaseService.cartArray.forEach((product) => {
+        history.push(product);
+      });
+      this.loginService.currentUser.purchaseHistory.push({
+        order: history,
+        total: this.firebaseService.total
+      });
+      this.firebaseService.cartArray = [];
+      this.firebaseService.updateFirebase();
+      this.router.navigate(['/landing']);
+    }
   }
 
   cancelCheckout() {

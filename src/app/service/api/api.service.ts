@@ -3,15 +3,27 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Product} from '../../model/product';
 
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from 'angularfire2/firestore';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  apiArray: Product[] = [];
+  apiArray = [];
 
 
-  constructor(private http : HttpClient) {
+  constructor(private http : HttpClient, private afs: AngularFirestore) {
+  }
 
+  getApi() {
+    this.afs.collection(`api`).get().subscribe((data) => {
+      data.forEach(item => {
+        this.apiArray.push(item.data());
+      });
+    });
   }
 
   initializeAPI(): Observable<any> {

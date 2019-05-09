@@ -9,4 +9,5 @@ export interface Product {
     id: number;
     apiUrl: string;
     product_colors: [];
+    rating?: [];
 }

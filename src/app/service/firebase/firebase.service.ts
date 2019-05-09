@@ -14,10 +14,12 @@ import {ApiService} from '../api/api.service';
 export class FirebaseService {
 
   total: number = 0;
+  totalQuantity = 0;
   cartArray = [];
   userArray = [];
 
   toggleCheckout: boolean = false;
+  toggleSelectedItem: Product;
 
   private cartRef: AngularFirestoreCollection<User>;
 
@@ -64,7 +66,7 @@ export class FirebaseService {
     }
     this.updateFirebase();
     this.itemTotal();
-    console.log('add cart complete')
+    this.quantityTotal();
   }
 
   updateQuantity(item) {
@@ -84,6 +86,13 @@ export class FirebaseService {
       else {
         this.total += (item.product.price * item.quantity)
       }
+    });
+  }
+
+  quantityTotal() {
+    this.totalQuantity = 0;
+    this.cartArray.forEach(item => {
+      this.totalQuantity += item.quantity;
     });
   }
 

@@ -23,4 +23,12 @@ export class LandingPage implements OnInit {
     }
   }
 
+  viewCart() {
+    this.router.navigate(['/cart']);
+  }
+
+  viewShop() {
+    this.router.navigate(['/shop']);
+  }
+
 }

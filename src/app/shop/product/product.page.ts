@@ -3,9 +3,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {ApiService} from '../../service/api/api.service';
 import {Product} from '../../model/product';
-import {Pro} from '@ionic/pro';
 import {LoginService} from '../../service/login/login.service';
 import {FirebaseService} from '../../service/firebase/firebase.service';
+
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-product',
@@ -32,7 +33,7 @@ export class ProductPage implements OnInit, OnDestroy {
 
   productArray: Product[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, public loginService: LoginService, public firebaseService:FirebaseService) { }
+  constructor(private toastController: ToastController, private router: Router, private route: ActivatedRoute, private api: ApiService, public loginService: LoginService, public firebaseService:FirebaseService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -54,5 +55,19 @@ export class ProductPage implements OnInit, OnDestroy {
 
   routeToLogin() {
     this.router.navigate(['/welcome-page']);
+  }
+
+  addToCart(item) {
+    this.presentToast();
+    this.firebaseService.addToCart(item);
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Added to Cart',
+      duration: 800,
+      color: 'tertiary'
+    });
+    toast.present();
   }
 }

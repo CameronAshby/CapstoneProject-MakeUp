@@ -3,19 +3,29 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Welcome to The Oasis {{loginService.currentUser ? loginService.currentUser.name : ''}}!</ion-title>
+    <ion-buttons (click)="viewCart()" class="cartIconContainer" slot="end">
+      <ion-icon name="cart"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h1>Oasis...Where its all up to your imagination</h1>
-
-  <div class="landingContent">
-    <div class="pictures">
-      <div class="imgage1"></div>
-      <div class="imgage2"></div>
-      <div class="imgage3"></div>
-      <div class="imgage4"></div>
-    </div>
+<ion-content class="mainContainer">
+  <div class="imageContainer">
+    <div class="slogan">The Oasis... More Than A Mirage</div>
+    <img class="makeupImage" src="../../assets/unsplash/assortedMakeup.jpeg">
+    <img class="makeupImage" src="../../assets/unsplash/chanel.jpeg">
+    <img class="makeupImage" src="../../assets/unsplash/mirror%20images.jpeg">
+    <img class="makeupImage" src="../../assets/unsplash/painted%20nails.jpeg">
+  </div>
+  <div class="flairContainer">
+    <img class="flair" src="../../../assets/newflair.png" alt="">
+    <img class="flair" src="../../../assets/newflair.png" alt="">
+  </div>
+  <div class="startShopping">
+    <button (click)="viewShop()" class="shoppingButton">START SHOPPING</button>
+  </div>
+  <div class="flairContainer">
+    <img class="flair" src="../../../assets/newflair.png" alt="">
+    <img class="flair" src="../../../assets/newflair.png" alt="">
   </div>
 </ion-content>
