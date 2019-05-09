@@ -19,3 +19,14 @@ ion-tab-button {
 .tab-selected * {
   color: #A25645;
 }
+
+.cartIconContainer {
+  padding: 0 8px;
+  width: 42px;
+  height: 32px;
+  font-size: 25px;
+}
+
+.cartIconContainer:hover {
+  cursor: pointer;
+}

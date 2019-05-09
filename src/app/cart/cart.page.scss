@@ -127,3 +127,45 @@ ion-col {
 .timesContainer {
   margin-bottom: 10px;
 }
+
+.infoContainer {
+  width: 70%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+@media only screen and (max-width: 700px) {
+  .mobile {
+    display: none;
+  }
+  .cartOptionsContainer {
+    width: 95%;
+  }
+  .cartContent {
+    width: 100%;
+  }
+  .infoContainer {
+    flex-direction: column;
+  }
+  .cartInfo {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .timesContainer {
+    margin-bottom: 0;
+  }
+  .remove {
+    margin-bottom: 10px;
+  }
+  .timesContainer {
+    width: 5%;
+    margin-left: 10px;
+  }
+  .priceContainer {
+    width: 45%;
+  }
+}

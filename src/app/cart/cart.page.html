@@ -28,15 +28,17 @@
                 <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="item.product.image_link" alt="API Image Not Available" class="cartImage">
                 <div class="cartTitle">{{item.product.name}}</div><div>{{item.product.brand !== null ? item.product.brand : 'maybelline'}}</div>
               </div>
-              <div class="cartItemSection"><div (click)="firebaseService.removeItem(i)" class="remove">Remove</div></div>
-              <div class="cartInfo cartItemSection"><ion-input (change)="firebaseService.updateQuantity(item)" class="cartInput" type="number" min="1" [(ngModel)]="item.quantity"></ion-input><div class="timesContainer">X</div><div>${{(item.product.price === '0.0' || item.product.price === null) ? '5.00' : item.product.price + (item.product.price.split('.')[1].length > 1? '': '0')}}</div></div>
-              <div class="cartItemSection">${{(item.product.price === '0.0' || item.product.price === null) ? (item.quantity * 5) + '.00' : ((item.product.price * item.quantity) | number: '1.2-2')}}</div>
+              <div class="infoContainer">
+                <div class="cartItemSection"><div (click)="firebaseService.removeItem(i)" class="remove">Remove</div></div>
+                <div class="cartInfo cartItemSection"><ion-input (change)="firebaseService.updateQuantity(item)" class="cartInput" type="number" min="1" [(ngModel)]="item.quantity"></ion-input><div class="timesContainer">X</div><div class="priceContainer">${{(item.product.price === '0.0' || item.product.price === null) ? '5.00' : item.product.price + (item.product.price.split('.')[1].length > 1? '': '0')}}</div></div>
+                <div class="cartItemSection">${{(item.product.price === '0.0' || item.product.price === null) ? (item.quantity * 5) + '.00' : ((item.product.price * item.quantity) | number: '1.2-2')}}</div>
+              </div>
             </div>
           </div>
           <div class="flairContainer">
+            <img class="flair mobile" src="../../assets/newflair.png" alt="">
             <img class="flair" src="../../assets/newflair.png" alt="">
-            <img class="flair" src="../../assets/newflair.png" alt="">
-            <img class="flair" src="../../assets/newflair.png" alt="">
+            <img class="flair mobile" src="../../assets/newflair.png" alt="">
           </div>
         </div>
       </div>

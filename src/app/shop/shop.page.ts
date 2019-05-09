@@ -3,6 +3,7 @@ import {ApiService} from '../service/api/api.service';
 import {LoadingController} from '@ionic/angular';
 import {FirebaseService} from '../service/firebase/firebase.service';
 import {LoginService} from '../service/login/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -11,7 +12,7 @@ import {LoginService} from '../service/login/login.service';
 })
 export class ShopPage implements OnInit {
 
-  constructor(private api: ApiService, private loader: LoadingController, private firebaseService: FirebaseService, private loginService: LoginService) {
+  constructor(private api: ApiService, private loader: LoadingController, private firebaseService: FirebaseService, private loginService: LoginService, private router: Router) {
   }
 
   ionViewDidEnter() {
@@ -21,6 +22,10 @@ export class ShopPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  viewCart() {
+    this.router.navigate(['/cart']);
   }
 
 }

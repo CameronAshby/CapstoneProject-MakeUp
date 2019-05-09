@@ -12,7 +12,7 @@
     <div *ngIf="isNewUser" class="welcomeContent">
         <div class="backgroundCard">
             <ion-card class="signUpCard">
-                <ion-card-header> New User</ion-card-header>
+                <ion-card-header class="newUserHeader">New User</ion-card-header>
                 <div class="flairContainer">
                     <img class="flair" src="../../assets/newflair.png" alt="">
                 </div>
@@ -33,13 +33,13 @@
         <div class="backgroundCard">
             <ion-card id="heroLoginContainer">
                 <div class="signInCard">
-                    <ion-card-header>Member Sign In</ion-card-header>
+                    <ion-card-header class="memberSignIn">Member Sign In</ion-card-header>
                     <div class="inputContainer">
                         <input type="email" [(ngModel)]="email" placeholder="Email" id="email">
                         <input type="password" [(ngModel)]="password" placeholder="Password" id="password">
                     </div>
                     <ion-button id="emailSignInbtn" (click)="loginService.emailSignIn(email, password); setUserName(name)">Sign In</ion-button>
-                    <div class="or">- - Or - -</div>
+                    <div class="or"> Or </div>
                     <div id="googleLoginContainer">
                         <img
                             id="signin_button" (click)="loginService.googleSignIn()"
@@ -57,6 +57,9 @@
                     <div class="logo_btn">
                         <span id="notMember">Not a member?</span>
                         <ion-button class="newUser_btn" (click)="newUser()"> Sign Up</ion-button>
+                    </div>
+                    <div class="flairContainer mobile">
+                        <img class="flair" src="../../assets/newflair.png" alt="">
                     </div>
                 </div>
             </ion-card>

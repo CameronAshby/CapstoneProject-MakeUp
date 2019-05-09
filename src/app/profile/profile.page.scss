@@ -11,6 +11,17 @@ ion-title {
   text-align: center;
 }
 
+.cartIconContainer {
+  padding: 0 8px;
+  width: 42px;
+  height: 32px;
+  font-size: 25px;
+}
+
+.cartIconContainer:hover {
+  cursor: pointer;
+}
+
 .productImage {
   width: 215px;
   height: 150px;

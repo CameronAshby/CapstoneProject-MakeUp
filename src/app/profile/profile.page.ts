@@ -23,7 +23,8 @@ export class ProfilePage implements OnInit {
     }
   }
 
-
-
+  viewCart() {
+    this.router.navigate(['/cart']);
+  }
 
 }
