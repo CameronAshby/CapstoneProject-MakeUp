@@ -10,64 +10,37 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
-  <div>
-    <div>Valued Customer {{ loginService.currentUser ? loginService.currentUser.name : ''}}</div>
-      <div class="orderContainer">
-          <ion-card class="purchase"*ngFor="let purchase of loginService.currentUser.purchaseHistory ? loginService.currentUser.purchaseHistory : []">
-            <div class="orderItem" *ngFor="let item of purchase.order">
-                <div class="name">{{item.product.name}}</div>
-                <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="item.product.image_link" alt="API Image Not Available" class="productImage">
-                <div class="quantity">Quantity: {{item.quantity}}</div>
-                <div class="total">Product total ${{(item.product.price === '0.0' || item.product.price === null) ? (item.quantity * 5) + '.00' : ((item.product.price * item.quantity) | number: '1.2-2')}}</div>
-            </div>
-          </ion-card>
-      </div>
-  </div>
-
-</ion-content>
-
 
 <ion-content padding>
 
     <div>
-        <div>Valued Customer {{ loginService.currentUser ? loginService.currentUser.name : ''}}</div>
+        <div class="customerName">Valued Customer <img class="flair" src="../../../assets/newflair.png" alt=""> {{ loginService.currentUser ? loginService.currentUser.name : ''}}</div>
         <div class="orderContainer">
-            <ion-card class="purchase"*ngFor="let purchase of loginService.currentUser.purchaseHistory ? loginService.currentUser.purchaseHistory : []">
+            <ion-card class="purchaseContainer"*ngFor="let purchase of loginService.currentUser.purchaseHistory ? loginService.currentUser.purchaseHistory : [], let i = index">
                 <div>
-                    <div class="orderItem" *ngFor="let item of purchase.order">
-                        <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="item.product.image_link" alt="API Image Not Available" class="productImage">
-                        <div class="name">{{item.product.name}}</div>
-                        <div class="quantity">Quantity: {{item.quantity}}</div>
-                        <div class="total">Product total ${{(item.product.price === '0.0' || item.product.price === null) ? (item.quantity * 5) + '.00' : ((item.product.price * item.quantity) | number: '1.2-2')}}</div>
+                    <div class="orderNumber">
+                        <img class="flair" src="../../../assets/newflair.png" alt="">
+                        <div >Order #{{i + 1}}</div>
+                        <img class="flair" src="../../../assets/newflair.png" alt="">
                     </div>
+                    <div class="total">Total ${{purchase.total}}</div>
                 </div>
+
+                    <div class="purchase">
+                        <div class="orderItem similarContainer" *ngFor="let item of purchase.order" >
+                            <div class="similarCard">
+                                <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="item.product.image_link" alt="API Image Not Available" class="productImage">
+                                <div class="name">{{item.product.name}}</div>
+                                <div class="quantity">Quantity: {{item.quantity}}</div>
+                                <div class="total">Product total ${{(item.product.price === '0.0' || item.product.price === null) ? (item.quantity * 5) + '.00' : ((item.product.price * item.quantity) | number: '1.2-2')}}</div>
+
+                            </div>
+                        </div>
+                    </div>
+
 
             </ion-card>
         </div>
     </div>
 
 </ion-content>
-<!--<ion-content padding>-->
-
-    <!--<div>-->
-        <!--<div>Valued Customer {{ loginService.currentUser ? loginService.currentUser.name : ''}}</div>-->
-        <!--<div class="orderContainer">-->
-            <!--<div id="extraContainer">-->
-                <!--<ion-card class="purchase"*ngFor="let purchase of loginService.currentUser.purchaseHistory ? loginService.currentUser.purchaseHistory : []">-->
-                    <!--&lt;!&ndash;<div id="extraContainer">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<ion-card class="similarContainer" *ngIf="similarProducts$ | async as similarProducts">&ndash;&gt;-->
-                    <!--<div class="similarCardContainer" *ngFor="let item of purchase.order, let i = index">-->
-                        <!--<div class="similarCard">-->
-                            <!--<img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="item.image_link" alt="API Image Not Available" class="similarImage">-->
-                            <!--<div>{{item.name}}</div>-->
-                        <!--</div>-->
-                        <!--</div>-->
-                <!--</ion-card>-->
-            <!--</div>-->
-            <!--&lt;!&ndash;</ion-card>&ndash;&gt;-->
-        <!--</div>-->
-    <!--</div>-->
-
-<!--</ion-content>-->
