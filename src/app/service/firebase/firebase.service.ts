@@ -31,6 +31,7 @@ export class FirebaseService {
     this.afs.collection<User>(`users`).doc<User>(this.loginService.currentUser.email).ref.onSnapshot(doc => {
       this.cartArray = (doc.data() as User).cart;
       this.itemTotal();
+      this.quantityTotal();
     });
   }
 

@@ -20,6 +20,7 @@ export class CartPage implements OnInit {
       else {
           this.firebaseService.toggleCheckout = false;
           this.firebaseService.getFirebaseCart();
+          this.firebaseService.quantityTotal();
       }
   }
 
