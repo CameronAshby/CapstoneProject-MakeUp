@@ -29,10 +29,12 @@
   </div>
 
   <div class="flairContainer" *ngIf="productId">
+    <img class="flair mobile" src="../../../assets/newflair.png" alt="">
     <img class="flair" src="../../../assets/newflair.png" alt="">
-    <img class="flair" src="../../../assets/newflair.png" alt="">
-    <img class="flair" src="../../../assets/newflair.png" alt="">
+    <img class="flair mobile" src="../../../assets/newflair.png" alt="">
   </div>
+
+  <div class="similarTitle"> Similar Items</div>
 
   <div id="extraContainer">
     <ion-card class="similarContainer" *ngIf="similarProducts$ | async as similarProducts">
