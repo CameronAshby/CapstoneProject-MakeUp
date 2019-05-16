@@ -61,3 +61,23 @@ ion-select {
 .orderDetailItem {
   margin-bottom: 10px;
 }
+
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 700px) {
+  .checkoutCard {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cardForm {
+    border: none;
+  }
+  .cardForm, .cardActions {
+    width: 90%;
+  }
+  .mobile {
+    display: flex;
+  }
+}
