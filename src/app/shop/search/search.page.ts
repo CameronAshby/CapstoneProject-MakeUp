@@ -40,7 +40,6 @@ export class SearchPage implements OnInit {
   }
 
   filterProducts(search: string) {
-    console.log(search);
     this.searchList = [];
 
     this.api.apiArray.forEach(product => {
@@ -48,8 +47,6 @@ export class SearchPage implements OnInit {
         this.searchList.push(product);
       }
     });
-
-    console.log(this.searchList);
   }
 
   addToCart(item) {
