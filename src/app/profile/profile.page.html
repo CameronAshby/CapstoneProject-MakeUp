@@ -12,30 +12,29 @@
 
 <ion-content padding>
     <div>
-        <div class="customerName">
-            <div>Valued Customer</div>
-            <div><img class="flair" src="../../../assets/newflair.png" alt=""></div>
-            <div>{{ loginService.currentUser ? loginService.currentUser.name : ''}}</div>
-        </div>
+        <div class="customerName"><div class="nameItem">Valued Customer</div> <div class="flairContainer"><img class="flair" src="../../assets/newflair.png" alt=""></div> <div class="nameItem">{{ loginService.currentUser ? loginService.currentUser.name : ''}}</div> </div>
         <div class="orderContainer">
             <ion-card class="purchaseContainer" *ngFor="let purchase of loginService.currentUser ? loginService.currentUser.purchaseHistory : [], let i = index">
-                <div>
+                <div class="orderDetailContainer">
                     <div class="orderNumber">
-                        <img class="flair" src="../../../assets/newflair.png" alt="">
-                        <div >Order #{{i + 1}}</div>
-                        <img class="flair" src="../../../assets/newflair.png" alt="">
+                        <div class="order">Order #{{i + 1}}</div>
                     </div>
-                    <div class="total">Total ${{purchase.total}}</div>
+                    <div class="total">Total ${{purchase.total | number: '1.2-2'}}</div>
+                    <div class="flairContainer">
+                        <img class="smallFlair" src="../../assets/newflair.png" alt="">
+                    </div>
                 </div>
-
                     <div class="purchase">
-                        <div class="orderItem similarContainer" *ngFor="let item of purchase ? purchase.order : []" >
+                        <div class="similarContainer" *ngFor="let item of purchase ? purchase.order : []" >
                             <div class="similarCard">
                                 <img onerror="this.src='../../../assets/logoImages/camlogo.png'" [src]="item.product.image_link" alt="API Image Not Available" class="productImage">
-                                <div class="name">{{item.product.name}}</div>
-                                <div class="quantity">Quantity: {{item.quantity}}</div>
-                                <div class="total">Product total ${{(item.product.price === '0.0' || item.product.price === null) ? (item.quantity * 5) + '.00' : ((item.product.price * item.quantity) | number: '1.2-2')}}</div>
-
+                                <div class="extraDetailsContainer">
+                                    <div class="name">{{item.product.name}}</div>
+                                    <div>
+                                        <div class="quantity">Quantity: {{item.quantity}}</div>
+                                        <div class="total">Product total ${{(item.product.price === '0.0' || item.product.price === null) ? (item.quantity * 5) + '.00' : ((item.product.price * item.quantity) | number: '1.2-2')}}</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
