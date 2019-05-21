@@ -12,7 +12,11 @@
 
 <ion-content padding>
     <div>
-        <div class="customerName">Valued Customer <img class="flair" src="../../../assets/newflair.png" alt=""> {{ loginService.currentUser ? loginService.currentUser.name : ''}}</div>
+        <div class="customerName">
+            <div>Valued Customer</div>
+            <div><img class="flair" src="../../../assets/newflair.png" alt=""></div>
+            <div>{{ loginService.currentUser ? loginService.currentUser.name : ''}}</div>
+        </div>
         <div class="orderContainer">
             <ion-card class="purchaseContainer" *ngFor="let purchase of loginService.currentUser ? loginService.currentUser.purchaseHistory : [], let i = index">
                 <div>
