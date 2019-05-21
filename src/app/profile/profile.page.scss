@@ -1,6 +1,6 @@
 * {
   color: #442C2E;
-  font-family: 'Cinzel', serif;
+  font-family: 'Poiret One', cursive;
 }
 ion-toolbar {
   --background: #FEEAE6;
@@ -21,14 +21,19 @@ ion-label {
   color: #FFFFFF;
 }
 .customerName{
-  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 25px;
-  text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
-  height: 40px;
+  margin-bottom: 10px;
+  font-family: 'Cinzel', serif;
 }
 
 .buttonContainer {
@@ -38,39 +43,41 @@ ion-label {
 
 .similarContainer {
   display: flex;
-  //overflow-x: scroll;
-  width: 80%;
+  justify-content: center;
+  width: 250px;
   align-items: baseline;
 }
 
 .productImage {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border: 1px solid #DCDCDC;
 }
 .purchase {
+  margin: 10px 10px;
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
-  height: 100%;
 }
+
 .orderContainer {
-  height: 200px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .purchaseContainer {
-  height: auto;
   width: 100%;
-  margin-bottom: 30px;
 }
 
 .similarCard {
+  width: 250px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  width: 200px;
   justify-content: center;
   align-items: center;
-  margin: 10px 10px 15px 10px;
   cursor: pointer;
   text-align: center;
 }
@@ -79,14 +86,14 @@ ion-label {
   margin-bottom: 20px;
   border: 1px solid #DCDCDC;
 }
+
 .orderNumber {
   display: flex;
-  justify-content: center;
-  height: 40px;
+  justify-content: space-evenly;
+  align-items: center;
   font-size: 25px;
-  text-align: center;
-
 }
+
 .total {
   font-size: 15px;
   width: 100%;
@@ -100,8 +107,52 @@ ion-label {
 }
 
 .flair {
+  width: 200px;
+  height: 50px;
+}
+
+.smallFlair {
   width: 100px;
   height: 25px;
+}
+
+.extraDetailsContainer {
+  margin-top: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orderDetailContainer {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.order {
+  font-family: 'Cinzel', serif;
+}
+
+.total {
+  margin-bottom: 10px;
+}
+
+.nameItem {
+  width: 30%;
+  text-align: center;
+}
+
+.cartIconContainer {
+  padding: 0 8px;
+  width: 42px;
+  height: 32px;
+  font-size: 25px;
+}
+
+.cartIconContainer:hover {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 700px) {
